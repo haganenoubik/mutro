@@ -157,4 +157,9 @@
 - Fly.io or Render
 
 【API】
-- Spotify Web API
+Spotify Web API
+
+
+### 画面遷移図
+Figma
+https://www.figma.com/file/260EiTms7ViQwb9Z7aVjUZ/mutro_design?type=design&node-id=38%3A675&mode=design&t=IKT0C34Q8s7OR4lL-1
