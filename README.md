@@ -165,4 +165,4 @@ Figma
 https://www.figma.com/file/260EiTms7ViQwb9Z7aVjUZ/mutro_design?type=design&node-id=38%3A675&mode=design&t=IKT0C34Q8s7OR4lL-1
 
 ### ER図
-![ER図](https://i.gyazo.com/9434af67eb0f99367ce5f4d31d4d00bf.png)
+![ER図](https://i.gyazo.com/68c050b456904b94e137d8a4954dfe75.png)
