@@ -161,5 +161,8 @@ Spotify Web API
 
 
 ### 画面遷移図
-Figma  
+Figma
 https://www.figma.com/file/260EiTms7ViQwb9Z7aVjUZ/mutro_design?type=design&node-id=38%3A675&mode=design&t=IKT0C34Q8s7OR4lL-1
+
+### ER図
+![ER図](https://i.gyazo.com/9242f322d35e6fbd8c7e5a8ef6e3fe5b.png)
