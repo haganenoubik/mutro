@@ -81,6 +81,5 @@ test:
 #
 production:
   <<: *default
-  database: mutro_production
-  username: mutro
-  password: <%= ENV["MUTRO_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
