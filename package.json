@@ -15,6 +15,7 @@
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   },
   "engines": {
-    "node": "18.17.1"
+    "node": "18.17.1",
+    "yarn": "1.22.19"
   }
 }
