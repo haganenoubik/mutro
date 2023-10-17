@@ -2,19 +2,18 @@ databases:
   - name: mutro_db
     databaseName: mutro_db
     user: haganenoubik
-    region: singapore
 
 services:
   - type: web
-    name: mutro_db
-    env: ruby
+    name: mutro
+    runtime: ruby
     region: singapore
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
-      - key: <%= ENV['DATABASE_URL'] %>
+      - key: DATABASE_URL
         fromDatabase:
-          name: mutro
+          name: mutro_db
           property: connectionString
-      - key: <%= ENV['RAILS_MASTER_KEY'] %>
+      - key: RAILS_MASTER_KEY
         sync: false
