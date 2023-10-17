@@ -64,9 +64,9 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  
-  gem 'rspec-rails'
+
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
   gem 'spring-commands-rspec'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
