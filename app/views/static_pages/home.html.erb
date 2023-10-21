@@ -1,10 +1,5 @@
-<h1 class="text-4xl font-bold">Hello world!</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-
-<button class="btn">Button</button>
-<button class="btn btn-neutral">Neutral</button>
-<button class="btn btn-primary">Primary</button>
-<button class="btn btn-secondary">Secondary</button>
-<button class="btn btn-accent">Accent</button>
-<button class="btn btn-ghost">Ghost</button>
-<button class="btn btn-link">Link</button>
+<div class="bg-white p-8 rounded-lg shadow-md text-center w-full">
+    <h1 class="text-4xl font-bold mb-4 text-accent">Hello Mutro!</h1>
+    <p class="text-gray-700 mb-4">Welcome to Mutro. Explore and enjoy our features.</p>
+    <%= link_to "Get Started", new_user_registration_path, class: "btn btn-primary hover:btn-primary-focus font-bold" %>
+</div>
