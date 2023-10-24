@@ -19,8 +19,11 @@
             <span class="badge">New</span>
           </a>
         </li>
+        <li>
+          <%= link_to "login", new_user_session_path, class: "justify-between" %>
+        </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete } %></li>
       </ul>
     </div>
   </div>
