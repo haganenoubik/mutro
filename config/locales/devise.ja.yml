@@ -4,6 +4,7 @@ ja:
       not_saved:
         one: "1つのエラーが発生したため、%{resource}を保存できませんでした。"
         other: "%{count}つのエラーが発生したため、%{resource}を保存できませんでした。"
+      taken: "は既に使用されています。"
   activerecord:
     errors:
       models:
@@ -11,6 +12,7 @@ ja:
           attributes:
             email:
               blank: "メールアドレスを入力してください。"
+              taken: "このメールアドレスは既に使用されています。"
             password:
               blank: "パスワードを入力してください。"
   attributes:
