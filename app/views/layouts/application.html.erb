@@ -10,8 +10,12 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen">
     <%= render 'shared/flash' %>
-    <%= yield %>
+    <%= render 'shared/header' %>
+    <div class="flex-grow">
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>
