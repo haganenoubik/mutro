@@ -18,4 +18,12 @@ ja:
   attributes:
     email: "メールアドレス"
     password: "パスワード"
-
+  devise:
+    sessions:
+      user:
+        signed_in: "ログインに成功しました！"
+        signed_out: "ログアウトしました。"
+    failure:
+      user:
+        invalid: "メールアドレスとパスワードが違います。"
+        not_found_in_database: "メールアドレスまたはパスワードが違います。"
