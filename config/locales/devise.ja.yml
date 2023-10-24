@@ -4,6 +4,7 @@ ja:
       not_saved:
         one: "1つのエラーが発生したため、%{resource}を保存できませんでした。"
         other: "%{count}つのエラーが発生したため、%{resource}を保存できませんでした。"
+      taken: "は既に使用されています。"
   activerecord:
     errors:
       models:
@@ -11,9 +12,18 @@ ja:
           attributes:
             email:
               blank: "メールアドレスを入力してください。"
+              taken: "このメールアドレスは既に使用されています。"
             password:
               blank: "パスワードを入力してください。"
   attributes:
     email: "メールアドレス"
     password: "パスワード"
-
+  devise:
+    sessions:
+      user:
+        signed_in: "ログインに成功しました！"
+        signed_out: "ログアウトしました。"
+    failure:
+      user:
+        invalid: "メールアドレスとパスワードが違います。"
+        not_found_in_database: "メールアドレスまたはパスワードが違います。"
