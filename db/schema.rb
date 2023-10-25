@@ -15,8 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_053040) do
   enable_extension "plpgsql"
 
   create_table "playlists", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.string "title", null: false
+    t.text "description", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
