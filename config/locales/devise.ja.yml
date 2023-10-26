@@ -28,3 +28,4 @@ ja:
         invalid: "メールアドレスとパスワードが違います。"
         not_found_in_database: "メールアドレスまたはパスワードが違います。"
         already_authenticated: "ログインしてるよ！"
+        unauthenticated: "ログインしてないよ！"
