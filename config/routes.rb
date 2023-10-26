@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'static_pages#home'
+  root 'playlists#index'
+
+  resources :playlists, only: %i[show new create edit update destroy]
 end
