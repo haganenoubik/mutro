@@ -10,15 +10,15 @@ class PlaylistsController < ApplicationController
   def new
   end
 
-  def create
+  def edit
   end
 
-  def edit
+  def create
   end
 
   def update
   end
 
-  def destroy 
+  def destroy
   end
 end
