@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'playlists#index'
 
   resources :playlists, only: %i[show new create edit update destroy]
+  resources :users, only: %i[show]
 end
