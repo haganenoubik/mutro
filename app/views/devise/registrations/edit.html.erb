@@ -1,7 +1,9 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= current_user.name %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+
 
   <div class="field">
     <%= f.label :email %><br />
@@ -40,4 +42,4 @@
 
 <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
-<%= link_to "Back", :back %>
+<%= link_to "マイページ", user_path(current_user), class: 'btn btn-sm btn-outline btn-primary'  %>
