@@ -47,8 +47,10 @@ gem 'bootsnap', require: false
 
 gem 'devise'
 
+# Spotify API
 gem 'rspotify'
 
+# environment variables
 gem 'dotenv-rails'
 
 # Use Sass to process CSS
