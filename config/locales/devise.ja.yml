@@ -1,10 +1,17 @@
 ja:
+  attributes:
+    name: "ユーザー名"
+    email: "メールアドレス"
+    password: "パスワード"
+    current_password: "現在のパスワード"
+    password_confirmation: "パスワード(確認用)"
   errors:
     messages:
       not_saved:
         one: "1つのエラーが発生したため、%{resource}を保存できませんでした。"
         other: "%{count}つのエラーが発生したため、%{resource}を保存できませんでした。"
       taken: "は既に使用されています。"
+      comfirmation: "が一致しません。"
   activerecord:
     errors:
       models:
@@ -14,15 +21,19 @@ ja:
               blank: "メールアドレスを入力してください。"
               taken: "このメールアドレスは既に使用されています。"
             password:
-              blank: "パスワードを入力してください。"
-  attributes:
-    email: "メールアドレス"
-    password: "パスワード"
+              blank: "を入力してください。"
+            current_password:
+              blank: "を入力してください。"
+            password_confirmation: 
+              confirmation: "を入力してください。"
   devise:
     sessions:
       user:
         signed_in: "ログインに成功しました！"
         signed_out: "ログアウトしました。"
+    registrations: 
+      user:
+        updated: "プロフィールを更新しました。"
     failure:
       user:
         invalid: "メールアドレスとパスワードが違います。"

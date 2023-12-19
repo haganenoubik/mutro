@@ -28,9 +28,8 @@
         <%= f.password_field :password_confirmation, class: "input input-sm input-bordered w-full", autocomplete: "new-password" %>
       </div>
 
-      <div class="btn btn-sm btn-outline btn-primary">
-        <%= f.submit "Sign up", class: "w-full" %>
-      </div>
+      <%= f.submit "Sign up", class: "btn btn-sm btn-outline btn-primary w-full" %>
+
     <% end %>
     <div class="mt-4">
       <%= render "devise/shared/links" %>
