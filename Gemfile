@@ -47,6 +47,8 @@ gem 'bootsnap', require: false
 
 gem 'devise'
 
+gem 'pry-rails'
+
 # Spotify API
 gem 'rspotify'
 
