@@ -46,6 +46,15 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 gem 'devise'
+
+gem 'pry-rails'
+
+# Spotify API
+gem 'rspotify'
+
+# environment variables
+gem 'dotenv-rails'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
