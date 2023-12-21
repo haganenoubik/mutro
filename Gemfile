@@ -47,8 +47,6 @@ gem 'bootsnap', require: false
 
 gem 'devise'
 
-gem 'pry-rails'
-
 # Spotify API
 gem 'rspotify'
 
@@ -77,6 +75,8 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'spring-commands-rspec'
+
+  gem 'pry-rails'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
