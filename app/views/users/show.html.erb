@@ -1,12 +1,14 @@
-<div class="avatar">
+<div class="ml-8 mb-4">
   <div class="w-40 rounded-full">
     <%= image_tag 'K1Ey1wwTeYA6YQM1698909468_1698909495.png' %>
   </div>
 </div>
-<div>
+<div class="ml-8 mb-4">
   <%= current_user.name %>
   <p>ユーザーID: <%= current_user.id %></p>
 </div>
-<% if user_signed_in? %>
-  <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-sm btn-outline btn-primary' %>
-<% end %>
+<div class="ml-8">
+  <% if user_signed_in? %>
+    <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-sm btn-outline btn-primary' %>
+  <% end %>
+</div>
