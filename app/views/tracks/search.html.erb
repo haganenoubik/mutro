@@ -1,0 +1,24 @@
+<h1 class="text-center font-bold">Tracks#search</h1>
+
+<%=form_with url:  search_tracks_path ,method: :get do |f|%>
+  <div class="mt-4 flex justify-center">
+    <%= f.search_field :search, value: params[:search], placeholder: "アーティスト名 or 曲名で検索してください", class: "w-1/2 p-3 mx-auto text-sm border-primary rounded-lg bg-slate-50 border-2", type: "text", autofocus: true %>
+  </div>
+<% end %>
+
+<% if @tracks.present? %>
+  <div class="mt-4">
+    <h2 class="text-center font-bold">検索結果</h2>
+    <div class="flex flex-wrap justify-center">
+      <% @tracks.each do |track| %>
+        <div class="flex justify-center p-2 ml-2 w-1/4">
+          <% if track.id %>
+            <iframe loading="lazy" src="https://open.spotify.com/embed/track/<%= track.id %>" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
