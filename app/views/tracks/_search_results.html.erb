@@ -4,7 +4,7 @@
       <div class="mt-4">
         <h2 class="text-center font-bold">検索結果</h2>
         <div class="flex flex-wrap justify-center">
-          <% @tracks.take(9).each do |track| %>
+          <% @tracks.each do |track| %>
             <div class="flex justify-center p-2 ml-2 w-1/4">
               <% if track.id %>
                 <iframe loading="lazy" src="https://open.spotify.com/embed/track/<%= track.id %>" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
