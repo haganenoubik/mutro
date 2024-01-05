@@ -53,6 +53,8 @@ gem 'rspotify'
 # environment variables
 gem 'dotenv-rails'
 
+gem 'kaminari'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
