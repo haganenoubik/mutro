@@ -4,15 +4,20 @@
 <!-- 曲検索結果のパーシャル-->
 <%= render 'tracks/search_results', tracks: @tracks %>
 
-<%= form_with model: @playlist, url: playlists_path do |f| %>
-  <!-- プレイリストのタイトル -->
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<%= form_with model: @playlist, url: playlists_path, class: "flex flex-col items-center" do |f| %>
 
-  <!-- プレイリストの説明 -->
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+  <div class="text-center p-2">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
 
-  <!-- プレイリストの投稿ボタン -->
-  <%= f.submit "投稿" %>
+  <div class="text-center p-2">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="p-2">
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+  </div>
+
 <% end %>
