@@ -1,19 +1,17 @@
-<!-- 曲検索フォームのパーシャル-->
 <%= render 'tracks/search_form' %>
 
-<!-- 曲検索結果のパーシャル-->
 <%= render 'tracks/search_results', tracks: @tracks %>
 
 <%= form_with model: @playlist, url: playlists_path, class: "flex flex-col items-center" do |f| %>
 
-  <div class="text-center p-2">
+  <div class="text-center p-2 mt-4">
     <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
+    <%= f.text_field :title, class: "form-control border-2 border-primary" %>
   </div>
 
   <div class="text-center p-2">
     <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
+    <%= f.text_area :description, class: "form-control w-full h-64 border-2 border-primary" %>
   </div>
 
   <div class="p-2">
