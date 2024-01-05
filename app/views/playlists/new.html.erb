@@ -1,1 +1,18 @@
-<p>Playlists#new</p>
+<!-- 曲検索フォームのパーシャル-->
+<%= render 'tracks/search_form' %>
+
+<!-- 曲検索結果のパーシャル-->
+<%= render 'tracks/search_results', tracks: @tracks %>
+
+<%= form_with model: @playlist, url: playlists_path do |f| %>
+  <!-- プレイリストのタイトル -->
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <!-- プレイリストの説明 -->
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <!-- プレイリストの投稿ボタン -->
+  <%= f.submit "投稿" %>
+<% end %>
