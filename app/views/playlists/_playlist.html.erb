@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "create_playlist" do %>
+  <% @playlist.tracks.each do |track| %>
+    <%= track.name %>
+  <% end %>
+<% end %>
