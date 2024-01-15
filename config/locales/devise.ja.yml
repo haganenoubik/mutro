@@ -33,6 +33,7 @@ ja:
         signed_out: "ログアウトしました。"
     registrations: 
       user:
+        signed_up: "アカウントを登録しました。"
         updated: "プロフィールを更新しました。"
     failure:
       user:
