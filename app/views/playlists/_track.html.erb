@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(track) do %>
+  <div class="playlist-track">
+    <!-- 曲情報の表示 -->
+    <div class="m-1">
+      <iframe src="https://open.spotify.com/embed/track/<%= track.spotify_id %>" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>      <!-- その他の曲情報（アーティスト名など）もここに表示 -->
+    </div>
+
+    <!-- 曲の視聴ボタン（後で実装） -->
+
+    <!-- プレイリストからの削除ボタン（後で実装） -->
+  </div>
+<% end %>
