@@ -1,21 +1,30 @@
-<%= render 'tracks/search_form' %>
+<div class="pb-8">
+  <%= render 'tracks/search_form' %>
+  <%= render 'tracks/search_results', tracks: @tracks %>
+</div>
 
-<%= render 'tracks/search_results', tracks: @tracks %>
-
-<%= form_with model: @playlist, url: playlists_path, class: "flex flex-col items-center" do |f| %>
-
-  <div class="text-center p-2 mt-4">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control border-2 border-primary" %>
+<div class="flex justify-center items-start gap-8">
+  <!-- プレイリストのプレビュー -->
+  <div class="w-full lg:w-1/3 xl:w-2/3 mx-8">
+    <%= render 'playlists/playlist_preview', playlist: @playlist %>
   </div>
 
-  <div class="text-center p-2">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control w-full h-64 border-2 border-primary" %>
-  </div>
+  <!-- フォーム -->
+  <div class="w-full lg:w-2/3 mx-8">
+    <%= form_with model: @playlist, url: playlists_path, class: "flex flex-col items-center" do |f| %>
+      <div class="w-full text-center p-2">
+        <%= f.label :title, class: "text-lg font-semibold" %>
+        <%= f.text_field :title, class: "form-control border-2 border-primary w-full p-2" %>
+      </div>
 
-  <div class="p-2">
-    <%= f.submit "投稿", class: "btn btn-primary" %>
-  </div>
+      <div class="w-full text-center p-2 mt-4">
+        <%= f.label :description, class: "text-lg font-semibold" %>
+        <%= f.text_area :description, class: "form-control w-full h-64 border-2 border-primary p-2" %>
+      </div>
 
-<% end %>
+      <div class="w-full p-2 mt-4">
+        <%= f.submit "投稿", class: "btn btn-primary py-2 px-4 text-lg w-full" %>
+      </div>
+    <% end %>
+  </div>
+</div>
