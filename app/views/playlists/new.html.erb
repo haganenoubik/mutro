@@ -14,7 +14,7 @@
     <%= form_with model: @playlist, url: playlists_path, class: "flex flex-col items-center" do |f| %>
       <div class="w-full text-center p-2">
         <%= f.label :title, class: "text-lg font-semibold" %>
-        <%= f.text_field :title, placeholder: "20文字以内でプレイリスト名を入力してください", class: "form-control border-2 border-primary w-full p-2 rounded-lg" %>
+        <%= f.text_field :title, value: "", placeholder: "20文字以内でプレイリスト名を入力してください", class: "form-control border-2 border-primary w-full p-2 rounded-lg" %>
       </div>
 
       <div class="w-full text-center p-2 mt-4">
