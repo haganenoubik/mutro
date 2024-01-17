@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment = @playlist.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to @playlist, notice: 'コメントが追加されました'
+      redirect_to @playlist, notice: 'コメントが追加されました！'
     else
-      redirect_to @playlist, alert: 'コメントの追加に失敗しました'
+      redirect_to @playlist, alert: 'コメントの追加に失敗しました…'
     end
   end
 
