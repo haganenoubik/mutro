@@ -24,18 +24,15 @@
       </div>
     </div>
   </div>
-
-
   <div class="mb-8">
     <ul class="flex border-b border-primary">
       <li class="-mb-px mr-1">
-        <a class="bg-white inline-block py-2 px-4 text-primary font-bold hover:shadow-lg mb-2" href="#">My Good Vibes</a>
+        <%= link_to 'My Good Vibes', good_vibes_user_path(current_user), class: "bg-white inline-block py-2 px-4 text-primary font-bold hover:shadow-lg mb-2" %>
       </li>
       <li class="mr-1">
         <a class="bg-white inline-block py-2 px-4 text-primary font-bold hover:shadow-lg mb-2" href="#">My Comments</a>
       </li>
     </ul>
   </div>
-  <!-- プレイリストカードは後で表示されるように変更する -->
 </div>
 
