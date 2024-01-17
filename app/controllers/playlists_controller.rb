@@ -10,22 +10,14 @@ class PlaylistsController < ApplicationController
   end
 
   def new
-    @playlist = current_user.playlists.find_by(status: :creating) || current_user.playlists.new
+    session.delete(:current_playlist_id) # セッションから前回のプレイリストIDを削除
+    @playlist = current_playlist
   end
 
   def create
-    # セッションからプレイリストIDを取得
-    @playlist = current_user.playlists.find_by(id: session[:playlist_id])
-
-    # プレイリストが見つからない場合の処理
-    unless @playlist
-      @playlist = current_user.playlists.new(playlist_params)
-      @playlist.status = :creating
-    end
-
-    # プレイリストを更新
+    @playlist = current_playlist
     if @playlist.update(playlist_params.merge(status: :published))
-      session.delete(:playlist_id) # セッションからIDを削除
+      session.delete(:current_playlist_id)
       redirect_to playlist_path(@playlist)
     else
       render :new
@@ -42,8 +34,8 @@ class PlaylistsController < ApplicationController
   end
 
   def add_track_to_playlist
-    @playlist = current_user.playlists.find_by(status: :creating) || current_user.playlists.create(status: :creating)
-    session[:playlist_id] = @playlist.id
+    @playlist = current_playlist
+    logger.debug("current_playlist: #{current_playlist.id}")
 
     spotify_track = RSpotify::Track.find(params[:track_id])
     @track = Track.find_or_create_by(spotify_id: params[:track_id]) do |t|
@@ -65,5 +57,4 @@ class PlaylistsController < ApplicationController
   def playlist_params
     params.require(:playlist).permit(:title, :description)
   end
-
 end
