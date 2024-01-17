@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "playlist_tracks" do %>
+  <div id="playlist-tracks">
+    <p class="text-center font-bold">Playlist</p>
+    <% @playlist.tracks.each do |track| %>
+      <%= turbo_frame_tag dom_id(track) do %>
+        <%= render "playlists/track", track: track %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

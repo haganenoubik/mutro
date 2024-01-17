@@ -1,1 +1,36 @@
-<p>Playlists#new</p>
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<div class="pb-8">
+  <%= render 'tracks/search_form' %>
+  <%= render 'tracks/search_results', tracks: @tracks %>
+</div>
+
+<div class="flex justify-center items-start gap-8 ">
+  <!-- プレイリストのプレビュー -->
+  <div class="w-full lg:w-1/3 xl:w-2/3 mx-8 bg-white rounded-lg shadow p-4">
+    <%= render 'playlists/playlist_preview', playlist: @playlist %>
+  </div>
+
+  <!-- フォーム -->
+  <div class="w-full lg:w-2/3 mx-8 bg-white rounded-lg shadow p-4 mb-4">
+    <%= form_with model: @playlist, url: playlists_path, method: :post, class: "flex flex-col items-center" do |f| %>
+      <div class="w-full text-center p-2">
+        <%= f.label :title, class: "text-lg font-semibold" %>
+        <%= f.text_field :title, required: true, value: "", placeholder: "20文字以内でプレイリスト名を入力してください", class: "form-control border-2 border-primary w-full p-2 rounded-lg" %>
+      </div>
+
+      <div class="w-full text-center p-2 mt-4">
+        <%= f.label :description, class: "text-lg font-semibold" %>
+        <%= f.text_area :description, required: true, placeholder: "30文字以上でプレイリストを聴いてほしいシチュエーションや、選んだ曲への思いを自由に綴ってください",  class: "form-control w-full h-64 border-2 border-primary p-2 rounded-lg" %>
+      </div>
+
+      <div class="w-full p-2 mt-4">
+        <%= f.submit "投稿", class: "btn btn-primary py-2 px-4 text-lg w-full" %>
+      </div>
+    <% end %>
+  </div>
+</div>

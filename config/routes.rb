@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root 'playlists#index'
 
-  resources :playlists, only: %i[show new create edit update destroy]
+  resources :playlists do
+    collection do
+      post :add_track_to_playlist
+    end
+  end
+
   resources :users, only: %i[show]
 
   resources :tracks do

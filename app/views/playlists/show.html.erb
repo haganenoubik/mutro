@@ -1,1 +1,26 @@
-<p>Playlists#show</p>
+<div class="container mx-auto my-8 p-4">
+  <!-- プレイリストのタイトルと説明 -->
+  <div class="mb-6">
+    <h1 class="text-3xl font-bold mb-2"><%= @playlist.title %></h1>
+    <%= simple_format(@playlist.description, {}, wrapper_tag: "p", class: "text-gray-600") %>
+
+  </div>
+
+  <!-- プレイリストのトラック一覧 -->
+  <div class="tracks">
+    <% if @playlist.tracks.any? %>
+      <h2 class="text-2xl font-semibold mb-4">Tracks</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <% @playlist.tracks.each do |track| %>
+          <div class="track bg-white rounded-lg shadow p-4">
+            <iframe src="https://open.spotify.com/embed/track/<%= track.spotify_id %>" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <p class="mt-2 text-sm font-medium text-gray-800"><%= track.title %> - <%= track.artist %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-gray-600">This playlist has no tracks yet.</p>
+    <% end %>
+  </div>
+</div>
+
