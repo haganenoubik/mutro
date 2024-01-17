@@ -5,9 +5,9 @@
   <div class="flex-none gap-2">
     <% if user_signed_in? %>
       <%= link_to 'my playlists', my_playlists_path, class: "btn btn-sm btn-outline btn-primary" %>
-      <%= link_to new_playlist_path, class: "btn btn-sm btn-outline btn-primary" do %>
-        作成
-      <% end %>
+    <%= link_to new_playlist_path, class: "btn btn-sm border-amber-500 text-amber-500 bg-white hover:bg-amber-600 hover:text-white" do %>
+    Release
+    <% end %>
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
