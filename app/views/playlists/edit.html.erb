@@ -1,0 +1,33 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold text-center mb-6">プレイリスト編集</h1>
+
+  <%= form_with model: @playlist, url: playlist_path(@playlist), method: :patch, class: "w-full max-w-2xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" do |f| %>
+    <div class="mb-4">
+      <%= f.label :title, class: "block text-gray-700 text-lg font-bold mb-2" %>
+      <%= f.text_field :title, required: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+
+    <div class="mb-6">
+      <%= f.label :description, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.text_area :description, required: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline", rows: 4 %>
+    </div>
+
+    <div class="tracks-list mt-4">
+      <h2 class="text-lg font-bold mb-2">Tracks</h2>
+      <ul>
+        <% @playlist.tracks.each do |track| %>
+          <li class="flex items-center justify-between mb-2 bg-gray-100 p-2 rounded">
+            <span class="text-gray-800"><%= track.title %> - <%= track.artist %></span>
+            <%= link_to '削除', playlist_track_path(track.id, playlist_id: @playlist.id), data: { turbo_method: :delete, turbo_confirm: 'この曲を削除しますか？' }, class: "btn btn-error text-white" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+
+    <div class="flex items-center justify-between">
+      <%= f.submit "更新", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
