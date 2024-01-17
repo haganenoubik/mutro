@@ -1,20 +1,22 @@
 <div class="container mx-auto px-4">
-  <h1 class="text-xl font-bold text-center my-8">プレイリスト一覧</h1>
+  <h1 class="text-xl font-bold text-primary text-center border-b border-primary my-8">All Playlists</h1>
   
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
     <% @playlists.each do |playlist| %>
-      <div class="bg-white shadow-lg rounded-lg p-4 h-full flex flex-col">
+      <div class="bg-white shadow-lg rounded-lg p-2 h-auto flex flex-col">
         <% if playlist.tracks.any? %>
           <div class="text-center mb-2">
-            <%= image_tag(playlist.tracks.first.image_url || 'default-playlist-image.png', class: "w-full h-auto") %>
+            <%= image_tag(playlist.tracks.first.image_url || 'default-playlist-image.png', class: "w-3/4 h-auto mx-auto") %>
           </div>
         <% end %>
         <h2 class="text-center text-lg font-bold mb-2">
           <%= link_to playlist.title, playlist_path(playlist), class: "text-primary hover:text-blue-700" %>
         </h2>
-        <p class="text-center text-sm text-gray-600">ユーザー：<%= playlist.user.name %></p>
+        <p class="text-center text-sm text-gray-600">Released by：<%= playlist.user.name %></p>
       </div>
     <% end %>
   </div>
 </div>
+
+
 

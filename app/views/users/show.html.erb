@@ -1,14 +1,41 @@
-<div class="ml-8 mb-4">
-  <div class="w-40 rounded-full">
-    <%= image_tag 'K1Ey1wwTeYA6YQM1698909468_1698909495.png' %>
+<div class="container mx-auto px-4 py-8">
+  <div class="flex flex-col md:flex-row items-center md:items-start md:space-x-6 mb-8">
+    <div class="flex flex-col items-center">
+      <div class="w-24 h-24 rounded-full flex items-center justify-center border-2 border-gray-300 mb-4">
+        Icon
+      </div>
+      <h1 class="text-2xl font-bold text-gray-800"><%= current_user.name %></h1>
+    </div>
+    <div class="flex-1 md:ml-6">
+      <p class="font-bold mb-4">About Me</p>
+        <div class="bg-white shadow-lg p-4 mb-4">
+          <% if current_user.bio.present? %>
+            <p class="text-gray-600"><%= current_user.bio %></p>
+          <% else %>
+            <p class="text-gray-600">プロフィール情報はありません。</p>
+          <% end %>
+        </div>
+      <div class="flex flex-col md:flex-row md:items-center">
+        <div class="ml-8">
+          <% if user_signed_in? %>
+            <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-sm btn-outline btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
+
+
+  <div class="mb-8">
+    <ul class="flex border-b border-primary">
+      <li class="-mb-px mr-1">
+        <a class="bg-white inline-block py-2 px-4 text-primary font-bold hover:shadow-lg mb-2" href="#">My Good Vibes</a>
+      </li>
+      <li class="mr-1">
+        <a class="bg-white inline-block py-2 px-4 text-primary font-bold hover:shadow-lg mb-2" href="#">My Comments</a>
+      </li>
+    </ul>
+  </div>
+  <!-- プレイリストカードは後で表示されるように変更する -->
 </div>
-<div class="ml-8 mb-4">
-  <%= current_user.name %>
-  <p>ユーザーID: <%= current_user.id %></p>
-</div>
-<div class="ml-8">
-  <% if user_signed_in? %>
-    <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-sm btn-outline btn-primary' %>
-  <% end %>
-</div>
+

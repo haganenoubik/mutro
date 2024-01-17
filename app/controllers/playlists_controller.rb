@@ -10,7 +10,7 @@ class PlaylistsController < ApplicationController
   end
 
   def new
-    session.delete(:current_playlist_id) # セッションから前回のプレイリストIDを削除
+    session.delete(:current_playlist_id)
     @playlist = current_playlist
   end
 

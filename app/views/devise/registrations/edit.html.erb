@@ -1,16 +1,21 @@
-<div class="text-primary font-bold">
+<div class="text-primary font-bold m-4">
   ユーザー名：<%= current_user.name %>
 </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+  <div class="m-4">
+    <%= f.label :name, class: 'font-bold' %><br />
     <%= f.text_field :name, class: "input input-sm input-bordered", autocomplete: "name", autofocus: true %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :bio, class: 'font-bold' %><br />
+    <%= f.text_area :bio, class: "input input-sm input-bordered h-40 w-96 resize-y", placeholder: "自己紹介文を入力してください" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, class: 'font-bold' %><br />
     <%= f.email_field :email, class: "input input-sm input-bordered", autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -19,7 +24,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password, class: 'font-bold' %><br />
     <%= f.password_field :password, class: "input input-sm input-bordered", autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
@@ -28,15 +33,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, class: 'font-bold' %><br />
     <%= f.password_field :password_confirmation, class: "input input-sm input-bordered", autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div>
+    <%= f.submit "更新", class: 'btn btn-sm btn-primary mt-2 mb-2' %>
   </div>
 <% end %>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "マイページ", user_path(current_user), class: 'btn btn-sm btn-outline btn-primary'  %>
+<div><%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn btn-sm btn-error text-white mb-2' %></div>
+<div class=" flex justify-center"><%= link_to "My Page", user_path(current_user), class: 'btn btn-sm btn-outline btn-primary mt-4' %></div>
