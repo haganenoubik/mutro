@@ -5,7 +5,7 @@
     <% @playlists.each do |playlist| %>
       <div class="bg-white shadow-lg rounded-lg p-4 h-full flex flex-col">
         <h2 class="text-center text-lg font-bold mb-2">
-          <%= link_to playlist.title, playlist_path(playlist), class: "text-blue-500 hover:text-blue-700" %>
+          <%= link_to playlist.title, playlist_path(playlist), class: "text-primary hover:text-blue-700" %>
         </h2>
         <p class="text-center text-sm text-gray-600">ユーザー：<%= playlist.user.name %></p>
         <div class="mt-auto">
