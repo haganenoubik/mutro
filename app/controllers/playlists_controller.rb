@@ -20,6 +20,7 @@ class PlaylistsController < ApplicationController
       session.delete(:current_playlist_id)
       redirect_to playlist_path(@playlist)
     else
+      flash.now[:alert] = @playlist.errors.full_messages.to_sentence
       render :new
     end
   end
