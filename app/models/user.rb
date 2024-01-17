@@ -4,4 +4,5 @@ class User < ApplicationRecord
 
   has_many :playlists, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :good_vibes, dependent: :destroy
 end
