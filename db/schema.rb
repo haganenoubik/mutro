@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_17_163047) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_17_180826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_17_163047) do
     t.datetime "updated_at", null: false
     t.index ["playlist_id"], name: "index_comments_on_playlist_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "good_vibes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "playlist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playlist_id"], name: "index_good_vibes_on_playlist_id"
+    t.index ["user_id", "playlist_id"], name: "index_good_vibes_on_user_id_and_playlist_id", unique: true
+    t.index ["user_id"], name: "index_good_vibes_on_user_id"
   end
 
   create_table "playlist_tracks", force: :cascade do |t|
@@ -68,6 +78,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_17_163047) do
 
   add_foreign_key "comments", "playlists"
   add_foreign_key "comments", "users"
+  add_foreign_key "good_vibes", "playlists"
+  add_foreign_key "good_vibes", "users"
   add_foreign_key "playlist_tracks", "playlists"
   add_foreign_key "playlist_tracks", "tracks"
   add_foreign_key "playlists", "users"

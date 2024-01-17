@@ -21,6 +21,7 @@
       <p class="text-gray-600">This playlist has no tracks yet.</p>
     <% end %>
   </div>
+  <%= render partial: 'playlists/good_vibes_button', locals: { playlist: @playlist } %>
     <% if @playlist.user == current_user %>
       <%= link_to 'プレイリスト編集', edit_playlist_path(@playlist), class: 'btn btn-primary m-4' %>
     <% if current_user == @playlist.user %>
