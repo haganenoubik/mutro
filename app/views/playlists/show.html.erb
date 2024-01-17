@@ -48,7 +48,7 @@
   <% if user_signed_in? %>
     <div class="mt-6 bg-white p-6 rounded-lg shadow">
       <%= form_with(model: [ @playlist, Comment.new ], class: "space-y-4") do |form| %>
-        <%= form.text_area :content, rows: 3, placeholder: "コメントを入力してください", class: "w-full p-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" %>
+        <%= form.text_area :content, rows: 3, placeholder: "コメントを入力してください", required: true, class: "w-full p-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" %>
         <%= form.submit "コメントする", class: "btn btn-outline btn-primary py-2 px-4" %>
       <% end %>
     </div>
