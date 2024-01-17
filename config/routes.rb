@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show] do
     member do
       get :good_vibes
+      get :comments
     end
   end
 
