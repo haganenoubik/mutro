@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root 'playlists#index'
+  
+  get 'my_playlists', to: 'playlists#my_playlists', as: :my_playlists, only: %i[show]
 
   resources :playlists do
     collection do
@@ -16,4 +18,5 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
 end
