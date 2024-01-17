@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     resources :tracks, controller: 'playlist_tracks', only: %i[destroy]
     resources :comments, only: %i[create]
+    resources :good_vibes, only: %i[create destroy]
   end
 
   resources :users, only: %i[show]
