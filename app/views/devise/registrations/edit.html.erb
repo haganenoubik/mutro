@@ -10,6 +10,11 @@
     <%= f.text_field :name, class: "input input-sm input-bordered", autocomplete: "name", autofocus: true %>
 
   <div class="field">
+    <%= f.label :bio, class: 'font-bold' %><br />
+    <%= f.text_area :bio, class: "input input-sm input-bordered h-40 w-96 resize-y", placeholder: "自己紹介文を入力してください" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email, class: 'font-bold' %><br />
     <%= f.email_field :email, class: "input input-sm input-bordered", autofocus: true, autocomplete: "email" %>
   </div>
