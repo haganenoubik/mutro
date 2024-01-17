@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       post :add_track_to_playlist
     end
+    resources :tracks, controller: 'playlist_tracks', only: %i[destroy]
   end
 
   resources :users, only: %i[show]

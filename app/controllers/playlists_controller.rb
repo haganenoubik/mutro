@@ -26,12 +26,23 @@ class PlaylistsController < ApplicationController
   end
 
   def edit
+    @playlist = current_user.playlists.find(params[:id])
   end
 
   def update
+    @playlist = current_user.playlists.find(params[:id])
+
+    if @playlist.update(playlist_params)
+      redirect_to playlist_path(@playlist), notice: 'プレイリストが更新されました'
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @playlist = current_user.playlists.find(params[:id])
+    @playlist.destroy
+    redirect_to playlists_path, notice: 'プレイリストが削除されました'
   end
 
   def add_track_to_playlist
