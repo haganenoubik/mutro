@@ -22,5 +22,11 @@
       <p class="text-gray-600">This playlist has no tracks yet.</p>
     <% end %>
   </div>
+  <% if @playlist.user == current_user %>
+    <%= link_to 'プレイリスト編集', edit_playlist_path(@playlist), class: 'btn btn-primary m-4' %>
+  <% if current_user == @playlist.user %>
+  <%= link_to 'プレイリストを削除', playlist_path(@playlist), data: { turbo_method: :delete, turbo_confirm: 'プレイリストを削除しますか？' }, class: "btn btn-error text-white" %>
+<% end %>
+<% end %>
 </div>
 
