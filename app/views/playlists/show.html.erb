@@ -2,7 +2,8 @@
   <!-- プレイリストのタイトルと説明 -->
   <div class="mb-6">
     <h1 class="text-3xl font-bold mb-2"><%= @playlist.title %></h1>
-    <p class="text-gray-600"><%= @playlist.description %></p>
+    <%= simple_format(@playlist.description, {}, wrapper_tag: "p", class: "text-gray-600") %>
+
   </div>
 
   <!-- プレイリストのトラック一覧 -->
