@@ -1,16 +1,16 @@
 <div class="container mx-auto px-4">
-  <h1 class="text-xl font-bold text-center my-8">My Playlists</h1>
+  <h1 class="text-xl font-bold text-primary border-b border-primary text-center my-8">My Playlists</h1>
   
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
     <% @playlists.each do |playlist| %>
-      <div class="bg-white shadow-lg rounded-lg p-4 h-full flex flex-col">
+      <div class="bg-white shadow-lg rounded-lg p-2 h-auto flex flex-col">
         <% if playlist.tracks.any? %>
           <div class="text-center mb-2">
-            <%= image_tag(playlist.tracks.first.image_url || 'default-playlist-image.png', class: "w-full h-auto") %>
+            <%= image_tag(playlist.tracks.first.image_url || 'default-playlist-image.png', class: "w-3/4 h-auto") %>
           </div>
         <% else %>
           <div class="text-center mb-2">
-            <%= image_tag('default-playlist-image.png', class: "w-full h-auto") %>
+            <%= image_tag('default-playlist-image.png', class: "w-3/4 h-auto") %>
           </div>
         <% end %>
         <h2 class="text-center text-lg font-bold mb-2">
@@ -21,4 +21,5 @@
     <% end %>
   </div>
 </div>
+
 
