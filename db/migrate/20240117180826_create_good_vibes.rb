@@ -6,5 +6,6 @@ class CreateGoodVibes < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :good_vibes, [:user_id, :playlist_id], unique: true
   end
 end
