@@ -6,13 +6,13 @@
       <div class="bg-white shadow-lg rounded-lg p-2 h-auto flex flex-col">
         <% if playlist.tracks.any? %>
           <div class="text-center mb-2">
-            <%= image_tag(playlist.tracks.first.image_url || 'default-playlist-image.png', class: "w-3/4 h-auto") %>
+            <%= image_tag(playlist.tracks.first.image_url || 'default-playlist-image.png', class: "w-3/4 h-auto mx-auto") %>
           </div>
         <% end %>
         <h2 class="text-center text-lg font-bold mb-2">
           <%= link_to playlist.title, playlist_path(playlist), class: "text-primary hover:text-blue-700" %>
         </h2>
-        <p class="text-center text-sm text-gray-600">ユーザー：<%= playlist.user.name %></p>
+        <p class="text-center text-sm text-gray-600">Released by：<%= playlist.user.name %></p>
       </div>
     <% end %>
   </div>
