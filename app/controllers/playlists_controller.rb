@@ -64,6 +64,10 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def my_playlists
+    @playlists = Playlist.where(user: current_user).order(created_at: :desc)
+  end
+
   private
 
   def playlist_params
