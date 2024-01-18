@@ -14,6 +14,10 @@ class PlaylistsController < ApplicationController
     @playlist = current_playlist
   end
 
+  def edit
+    @playlist = current_user.playlists.find(params[:id])
+  end
+
   def create
     @playlist = current_playlist
     if @playlist.update(playlist_params.merge(status: :published))
@@ -23,10 +27,6 @@ class PlaylistsController < ApplicationController
       flash.now[:alert] = @playlist.errors.full_messages.to_sentence
       render :new
     end
-  end
-
-  def edit
-    @playlist = current_user.playlists.find(params[:id])
   end
 
   def update
@@ -59,7 +59,7 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.append("playlist_tracks", partial: "playlists/track", locals: { track: @track })
+        render turbo_stream: turbo_stream.append('playlist_tracks', partial: 'playlists/track', locals: { track: @track })
       end
     end
   end

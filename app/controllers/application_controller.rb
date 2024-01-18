@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
     logger.debug "Session current_playlist_id: #{session[:current_playlist_id]}"
     logger.debug "Current playlist: #{@current_playlist.inspect}"
-    
+
     @current_playlist
   end
 
