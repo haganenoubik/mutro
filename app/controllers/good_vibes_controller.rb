@@ -3,9 +3,7 @@ class GoodVibesController < ApplicationController
   before_action :set_playlist
 
   def create
-    unless current_user.good_vibed?(@playlist)
-      @playlist.good_vibes.create!(user: current_user)
-    end
+    @playlist.good_vibes.create!(user: current_user) unless current_user.good_vibed?(@playlist)
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to @playlist }
@@ -27,4 +25,3 @@ class GoodVibesController < ApplicationController
     @playlist = Playlist.find(params[:playlist_id])
   end
 end
-

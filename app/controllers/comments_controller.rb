@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @playlist = Playlist.find(params[:playlist_id])
     @comment = @playlist.comments.build(comment_params)

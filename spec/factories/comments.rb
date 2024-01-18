@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :comment do
     user { nil }
     playlist { nil }
-    content { "MyText" }
+    content { 'MyText' }
   end
 end

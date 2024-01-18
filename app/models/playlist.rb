@@ -13,13 +13,13 @@ class Playlist < ApplicationRecord
 
   enum status: {
     creating: 0,
-    published: 1  
-  } 
+    published: 1
+  }
 
   private
 
   def set_default_values
-    self.title ||= ""
-    self.description ||= ""
+    self.title ||= ''
+    self.description ||= ''
   end
 end
