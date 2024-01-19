@@ -65,7 +65,7 @@ class PlaylistsController < ApplicationController
   end
 
   def my_playlists
-    @playlists = Playlist.where(user: current_user).order(created_at: :desc).page(params[:page])
+    @playlists = Playlist.where(user: current_user).order(created_at: :desc).page(params[:page]).page(params[:page])
   end
 
   private
