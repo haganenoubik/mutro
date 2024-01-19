@@ -1,18 +1,7 @@
 <div class="container mx-auto px-4 py-8">
   <h1 class="text-2xl font-bold text-center text-primary border-b border-primary mb-4">My Good Vibes</h1>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 mb-16">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
     <% @good_vibed_playlists.each do |playlist| %>
-      <div class="bg-white shadow-lg rounded-lg p-2 h-auto flex flex-col">
-        <% if playlist.tracks.any? %>
-          <div class="text-center mb-2">
-            <%= image_tag(playlist.tracks.first.image_url || 'default-playlist-image.png', class: "w-3/4 h-auto mx-auto") %>
-          </div>
-        <% end %>
-        <h2 class="text-center text-lg font-bold mb-2">
-          <%= link_to playlist.title, playlist_path(playlist), class: "text-primary hover:text-blue-700" %>
-        </h2>
-        <p class="text-center text-sm text-gray-600">Released by：<%= playlist.user.name %></p>
-      </div>
+      <%= render 'playlists/playlist', playlist: playlist %>
     <% end %>
   </div>
-</div>

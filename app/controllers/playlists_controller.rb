@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @playlists = Playlist.where(status: :published).order(created_at: :desc).includes(:user)
+    @playlists = Playlist.order(created_at: :desc).includes(:user)
   end
 
   def show

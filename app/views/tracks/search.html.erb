@@ -1,7 +1,0 @@
-<h1 class="text-center font-bold">Tracks#search</h1>
-
-<%=form_with url:  search_tracks_path ,method: :get do |f|%>
-  <div class="mt-4 flex justify-center">
-    <%= f.search_field :search, value: params[:search], placeholder: "アーティスト名 or 曲名で検索してください", class: "w-1/2 p-3 mx-auto text-sm border-primary rounded-lg bg-slate-50 border-2", type: "text", autofocus: true %>
-  </div>
-<% end %>
