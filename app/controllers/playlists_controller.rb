@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @playlists = Playlist.order(created_at: :desc).includes(:user)
+    @playlists = Playlist.order(created_at: :desc).includes(:user).page(params[:page])
   end
 
   def show
@@ -10,8 +10,7 @@ class PlaylistsController < ApplicationController
   end
 
   def new
-    session.delete(:current_playlist_id)
-    @playlist = current_playlist
+    @playlist = Playlist.new
   end
 
   def edit
@@ -19,7 +18,7 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = current_playlist
+    @playlist = current_user.playlists.find_by(id: session[:current_playlist_id])
     if @playlist.update(playlist_params.merge(status: :published))
       session.delete(:current_playlist_id)
       redirect_to playlist_path(@playlist)
@@ -46,15 +45,18 @@ class PlaylistsController < ApplicationController
   end
 
   def add_track_to_playlist
-    @playlist = current_playlist
-    logger.debug("current_playlist: #{current_playlist.id}")
+    @playlist = current_user.playlists.find_or_initialize_by(id: session[:current_playlist_id])
+    if @playlist.new_record?
+      @playlist.save
+      session[:current_playlist_id] = @playlist.id
+    end
 
     spotify_track = RSpotify::Track.find(params[:track_id])
+    
     @track = Track.find_or_create_by(spotify_id: params[:track_id]) do |t|
       t.title = spotify_track.name
       t.artist = spotify_track.artists.first.name
     end
-
     @playlist.tracks << @track unless @playlist.tracks.include?(@track)
 
     respond_to do |format|
@@ -65,7 +67,7 @@ class PlaylistsController < ApplicationController
   end
 
   def my_playlists
-    @playlists = Playlist.where(user: current_user).order(created_at: :desc)
+    @playlists = Playlist.where(user: current_user).order(created_at: :desc).page(params[:page]).page(params[:page])
   end
 
   private

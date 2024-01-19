@@ -1,9 +1,9 @@
-<div class="bg-white shadow-lg rounded-lg p-2 h-auto flex flex-col transition-transform duration-300 hover:-translate-y-2 hover:rotate-[-3deg]">
-  <div class="text-center mb-2">
+<div class="bg-slate-50 outline outline-1 outline-primary shadow-lg rounded-lg p-2 h-auto m-2 flex flex-col transition-transform duration-300 hover:-translate-y-2 hover:rotate-[-3deg]">
+  <div class="text-center m-2">
     <% if playlist.tracks.first.present? && playlist.tracks.first.image_url.present? %>
-      <%= image_tag(playlist.tracks.first.image_url, class: "w-3/4 h-auto mx-auto") %>
+      <%= image_tag(playlist.tracks.first.image_url, class: "w-3/4 h-auto mx-auto rounded-full") %>
     <% else %>
-      <%= image_tag('default-playlist-image.png', class: "w-3/4 h-auto mx-auto") %>
+      <%= image_tag('default-playlist-image.png', class: "w-3/4 h-auto mx-auto rounded-full") %>
     <% end %>
   </div>
   <h2 class="text-center text-lg font-bold mb-2">

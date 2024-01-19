@@ -5,8 +5,12 @@
 <% end %>
 
 <div class="pb-8">
-  <%= render 'tracks/search_form' %>
-  <%= render 'tracks/search_results', tracks: @tracks %>
+  <%= turbo_frame_tag "search_form" do %>
+    <%= render 'tracks/search_form' %>
+  <% end %>
+  <%= turbo_frame_tag "search_results" do %>
+    <%= render 'tracks/search_results', tracks: @tracks %>
+  <% end %>
 </div>
 
 <div class="flex justify-center items-start gap-8 ">
