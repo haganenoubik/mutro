@@ -3,21 +3,7 @@
   
   <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
     <% @playlists.each do |playlist| %>
-      <div class="bg-white shadow-lg rounded-lg p-2 h-auto flex flex-col transition-transform duration-300 hover:-translate-y-2 hover:rotate-[-3deg]">
-        <% if playlist.tracks.any? %>
-          <div class="text-center mb-2">
-            <%= image_tag(playlist.tracks.first.image_url || 'default-playlist-image.png', class: "w-3/4 h-auto mx-auto") %>
-          </div>
-        <% end %>
-        <h2 class="text-center text-lg font-bold mb-2">
-          <%= link_to playlist.title, playlist_path(playlist), class: "text-primary" %>
-        </h2>
-        <div class="text-sm text-gray-500">
-        <p>Released by：<%= playlist.user.name %></p>
-        <p>Released on：<%= playlist.created_at.strftime("%Y/%m/%d") %></p>
-        <p>Tracks：<%= playlist.tracks.count %></p>
-        </div>
-      </div>
+      <%= render 'playlists/playlist', playlist: playlist %>
     <% end %>
   </div>
 </div>
