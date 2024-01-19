@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def good_vibes
     @user = User.find(params[:id])
-    @good_vibed_playlists = @user.good_vibed_playlists.order(created_at: :desc)
+    @good_vibed_playlists = @user.good_vibed_playlists.order(created_at: :desc).page(params[:page])
 
     respond_to do |format|
       format.html
