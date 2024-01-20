@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @playlists = Playlist.order(created_at: :desc).includes(:user).page(params[:page])
+    @playlists = Playlist.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -21,18 +21,16 @@ class PlaylistsController < ApplicationController
     @playlist = current_user.playlists.new(playlist_params)
 
     if session[:current_playlist_tracks].present?
-      session[:current_playlist_tracks].each do |track_id|
-        track = Track.find(track_id)
-        @playlist.tracks << track unless @playlist.tracks.include?(track)
-      end
+      # 一度のクエリで必要なトラックを全て取得
+      tracks = Track.where(id: session[:current_playlist_tracks])
+      @playlist.tracks = tracks
     end
 
     if @playlist.save
       session.delete(:current_playlist_tracks)
-      session.delete(:current_playlist_id)
-      redirect_to playlist_path(@playlist), notice: 'プレイリストが作成されました'
+      redirect_to playlist_path(@playlist), notice: 'congratulations on releasing your playlist!🎉'
     else
-      flash.now[:alert] = @playlist.errors.full_messages.to_sentence
+      flash.now[:alert] = @playlist.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -55,9 +53,6 @@ class PlaylistsController < ApplicationController
   end
 
   def add_track_to_playlist
-    # 現在のプレイリストIDをセッションに保存（新規作成時のみ）
-    session[:current_playlist_id] ||= current_user.playlists.create.id
-
     spotify_track = RSpotify::Track.find(params[:track_id])
     @track = Track.find_or_create_by(spotify_id: params[:track_id]) do |t|
       t.title = spotify_track.name
@@ -77,7 +72,7 @@ class PlaylistsController < ApplicationController
 
 
   def my_playlists
-    @playlists = Playlist.where(user: current_user).order(created_at: :desc).page(params[:page]).page(params[:page])
+    @playlists = current_user.playlists.order(created_at: :desc).page(params[:page])
   end
 
   private
