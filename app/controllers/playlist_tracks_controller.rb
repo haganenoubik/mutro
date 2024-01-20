@@ -7,7 +7,7 @@ class PlaylistTracksController < ApplicationController
       @playlist.tracks.delete(@track)
       redirect_to edit_playlist_path(@playlist), notice: '曲が削除されました'
     else
-      redirect_to edit_playlist_path(@playlist), alert: 'プレイリストは少なくとも5曲必要です'
+      redirect_to edit_playlist_path(@playlist), alert: 'プレイリストは5曲以上にしてね！'
     end
   end
 
