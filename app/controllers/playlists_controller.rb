@@ -70,6 +70,9 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def new_releases
+    @playlists = Playlist.includes(:user).where("created_at >= ?", 24.hours.ago).page(params[:page])
+  end
 
   def my_playlists
     @playlists = current_user.playlists.order(created_at: :desc).page(params[:page])
