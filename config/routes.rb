@@ -10,12 +10,14 @@ Rails.application.routes.draw do
 
   resources :playlists do
     collection do
+      get :new_releases
       post :add_track_to_playlist
     end
     resources :tracks, controller: 'playlist_tracks', only: %i[destroy]
     resources :comments, only: %i[create]
     resources :good_vibes, only: %i[create destroy]
   end
+
 
   resources :users, only: %i[show] do
     member do
