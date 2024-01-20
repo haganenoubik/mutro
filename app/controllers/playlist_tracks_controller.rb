@@ -3,8 +3,12 @@ class PlaylistTracksController < ApplicationController
   before_action :set_track, only: %i[destroy]
 
   def destroy
-    @playlist.tracks.delete(@track)
-    redirect_to edit_playlist_path(@playlist), notice: '曲が削除されました。'
+    if @playlist.tracks.count > 5
+      @playlist.tracks.delete(@track)
+      redirect_to edit_playlist_path(@playlist), notice: '曲が削除されました'
+    else
+      redirect_to edit_playlist_path(@playlist), alert: 'プレイリストは少なくとも5曲必要です'
+    end
   end
 
   private
