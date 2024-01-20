@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @playlists = Playlist.order(created_at: :desc).includes(:user).page(params[:page])
+    @playlists = Playlist.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -18,12 +18,19 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = current_user.playlists.find_by(id: session[:current_playlist_id])
-    if @playlist.update(playlist_params.merge(status: :published))
-      session.delete(:current_playlist_id)
-      redirect_to playlist_path(@playlist)
+    @playlist = current_user.playlists.new(playlist_params)
+
+    if session[:current_playlist_tracks].present?
+      # 一度のクエリで必要なトラックを全て取得
+      tracks = Track.where(id: session[:current_playlist_tracks])
+      @playlist.tracks = tracks
+    end
+
+    if @playlist.save
+      session.delete(:current_playlist_tracks)
+      redirect_to playlist_path(@playlist), notice: 'congratulations on releasing your playlist!🎉'
     else
-      flash.now[:alert] = @playlist.errors.full_messages.to_sentence
+      flash.now[:alert] = @playlist.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -34,6 +41,7 @@ class PlaylistsController < ApplicationController
     if @playlist.update(playlist_params)
       redirect_to playlist_path(@playlist), notice: 'プレイリストが更新されました'
     else
+      flash.now[:alert] = 'プレイリストの更新に失敗しました'
       render :edit
     end
   end
@@ -45,19 +53,15 @@ class PlaylistsController < ApplicationController
   end
 
   def add_track_to_playlist
-    @playlist = current_user.playlists.find_or_initialize_by(id: session[:current_playlist_id])
-    if @playlist.new_record?
-      @playlist.save
-      session[:current_playlist_id] = @playlist.id
-    end
-
     spotify_track = RSpotify::Track.find(params[:track_id])
-    
     @track = Track.find_or_create_by(spotify_id: params[:track_id]) do |t|
       t.title = spotify_track.name
       t.artist = spotify_track.artists.first.name
     end
-    @playlist.tracks << @track unless @playlist.tracks.include?(@track)
+
+    # 追加された曲のIDをセッションに保存
+    session[:current_playlist_tracks] ||= []
+    session[:current_playlist_tracks] << @track.id unless session[:current_playlist_tracks].include?(@track.id)
 
     respond_to do |format|
       format.turbo_stream do
@@ -66,8 +70,9 @@ class PlaylistsController < ApplicationController
     end
   end
 
+
   def my_playlists
-    @playlists = Playlist.where(user: current_user).order(created_at: :desc).page(params[:page]).page(params[:page])
+    @playlists = current_user.playlists.order(created_at: :desc).page(params[:page])
   end
 
   private

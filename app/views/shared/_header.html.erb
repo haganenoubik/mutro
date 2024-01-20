@@ -7,7 +7,8 @@
     <% if user_signed_in? %>
       <div class="flex items-center gap-2">
         <%= link_to 'Release', new_playlist_path, class: "btn btn-sm border-amber-500 text-amber-500 bg-white hover:bg-amber-600 hover:text-white" %>
-        <%= link_to 'my playlists', my_playlists_path, class: "btn btn-sm btn-outline btn-primary" %>
+        <%= link_to 'All Playlists', root_path, class: "btn btn-sm btn-outline btn-primary" %>
+        <%= link_to 'My Playlists', my_playlists_path, class: "btn btn-sm btn-outline btn-primary" %>
 
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
