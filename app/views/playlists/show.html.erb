@@ -22,7 +22,10 @@
     <% end %>
   </div>
   <%= render partial: 'playlists/good_vibes_button', locals: { playlist: @playlist } %>
-    <% if @playlist.user == current_user %>
+  <% if @playlist.user == current_user %>
+      <%= link_to "https://twitter.com/share?url=#{playlist_url(@playlist)}&text=🎉Congratulations on releasing your playlist!🎉 %0a【#{@playlist.title}】%0a%0a #Mutro", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Share to X" do %>
+        <i class="fa-brands fa-x-twitter fa-xl"></i>
+      <% end %>
       <%= link_to 'プレイリスト編集', edit_playlist_path(@playlist), class: 'btn btn-primary m-4' %>
     <% if current_user == @playlist.user %>
       <%= link_to 'プレイリストを削除', playlist_path(@playlist), data: { turbo_method: :delete, turbo_confirm: 'プレイリストを削除しますか？' }, class: "btn btn-error text-white" %>
