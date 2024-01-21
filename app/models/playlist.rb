@@ -8,9 +8,19 @@ class Playlist < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 20 }
   validates :description, presence: true, length: { maximum: 3000 }
+  validate :tracks_count_within_limit
 
   enum status: {
     creating: 0,
     published: 1
   }
+
+  private
+
+  def tracks_count_within_limit
+    if tracks.size < 5 || tracks.size > 20
+      errors.add(:tracks, "must be between 5 and 20")
+    end
+  end
+
 end
