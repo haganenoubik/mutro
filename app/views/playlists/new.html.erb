@@ -22,12 +22,12 @@
     <%= form_with model: @playlist, url: playlists_path, method: :post, class: "flex flex-col items-center" do |f| %>
       <div class="w-full text-center p-2">
         <%= f.label :title, class: "text-lg font-bold text-primary" %>
-        <%= f.text_field :title, required: true, placeholder: "20文字以内でプレイリスト名を入力してください", class: "form-control border-2 border-primary w-full p-2 rounded-lg" %>
+        <%= f.text_field :title, required: true, placeholder: "プレイリスト名は20文字まで", class: "form-control border-2 border-primary w-full p-2 rounded-lg" %>
       </div>
 
       <div class="w-full text-center p-2 mt-4">
         <%= f.label :description, class: "text-lg font-bold text-primary" %>
-        <%= f.text_area :description, required: true, placeholder: "プレイリストを聴いてほしいシチュエーションや、選んだ曲への思いを自由に綴ってください",  class: "form-control w-full h-64 border-2 border-primary p-2 rounded-lg" %>
+        <%= f.text_area :description, required: true, placeholder: "プレイリストを聴いてほしいシチュエーション、選んだ曲の思い出やアーティストへの思いを自由に綴ってください！",  class: "form-control w-full h-64 border-2 border-primary p-2 rounded-lg" %>
       </div>
 
       <div class="w-full p-2 mt-4">
