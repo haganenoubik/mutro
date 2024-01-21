@@ -2,6 +2,7 @@ ja:
   attributes:
     name: "ユーザー名"
     email: "メールアドレス"
+    bio: "About Me"
     password: "パスワード"
     current_password: "現在のパスワード"
     password_confirmation: "パスワード(確認用)"
