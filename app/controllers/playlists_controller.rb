@@ -10,6 +10,7 @@ class PlaylistsController < ApplicationController
   end
 
   def new
+    session.delete(:current_playlist_tracks)
     @playlist = Playlist.new
   end
 
@@ -31,7 +32,6 @@ class PlaylistsController < ApplicationController
       redirect_to playlist_path(@playlist), notice: 'congratulations on releasing your playlist!🎉'
     else
       flash.now[:alert] = @playlist.errors.full_messages.join(', ')
-      session.delete(:current_playlist_tracks)
       render :new
     end
   end
