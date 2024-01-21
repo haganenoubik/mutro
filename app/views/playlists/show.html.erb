@@ -1,14 +1,14 @@
 <div class="container mx-auto my-8 p-4">
 
   <div class="mb-6">
-    <h1 class="text-3xl font-bold mb-2"><%= @playlist.title %></h1>
-    <%= simple_format(@playlist.description, {}, wrapper_tag: "p", class: "text-gray-600") %>
+    <h1 class="text-center text-3xl font-black text-slate-600 mb-6"><%= @playlist.title %></h1>
+    <%= simple_format(@playlist.description, {}, wrapper_tag: "p", class: "text-slate-600") %>
 
   </div>
 
   <div class="tracks">
     <% if @playlist.tracks.any? %>
-      <h2 class="text-2xl font-semibold mb-4">Tracks</h2>
+      <h2 class="text-center text-xl text-slate-600 font-bold mb-4">TRACKS</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <% @playlist.tracks.each do |track| %>
           <div class="track bg-white rounded-lg shadow p-4">
@@ -32,12 +32,12 @@
     <% end %>
   <% end %>
   <div class="flex justify-center mt-8">
-  <%= link_to '一覧に戻る', root_path, class: 'btn btn-outline btn-primary rounded-lg' %>
+  <%= link_to 'Back to All Playlists', root_path, class: 'btn btn-outline btn-primary rounded-lg' %>
   </div>
 </div>
 
 <div class="comments mt-8">
-  <h3 class="text-2xl font-bold mb-4">Comments</h3>
+  <h3 class="text-2xl font-bold text-slate-600 mb-4">COMMENTS</h3>
   <div class="space-y-4">
     <% @playlist.comments.each do |comment| %>
       <div class="p-4 bg-white rounded-lg shadow">
@@ -52,8 +52,8 @@
   <% if user_signed_in? %>
     <div class="mt-6 bg-white p-6 rounded-lg shadow">
       <%= form_with(model: [ @playlist, Comment.new ], class: "space-y-4") do |form| %>
-        <%= form.text_area :content, rows: 3, placeholder: "コメントを入力してください", required: true, class: "w-full p-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" %>
-        <%= form.submit "コメントする", class: "btn btn-outline btn-primary py-2 px-4" %>
+        <%= form.text_area :content, rows: 5, placeholder: "コメントを入力してください", required: true, class: "w-full p-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" %>
+        <%= form.submit "コメントする", class: "btn btn-outline btn-primary py-2 px-2" %>
       <% end %>
     </div>
   <% end %>
