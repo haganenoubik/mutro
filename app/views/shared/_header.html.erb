@@ -5,24 +5,28 @@
     </div>
 
     <% if user_signed_in? %>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-3">
         <%= link_to 'Release', new_playlist_path, class: "btn btn-sm border-amber-500 text-amber-500 bg-white hover:bg-amber-600 hover:text-white" %>
-        <%= link_to 'New Releases', new_releases_playlists_path, class: "btn btn-sm btn-outline btn-primary" %>
-        <%= link_to 'All Playlists', root_path, class: "btn btn-sm btn-outline btn-primary" %>
-
-        <%= link_to 'My Playlists', my_playlists_path, class: "btn btn-sm btn-outline btn-primary" %>
-
+        <%= link_to new_releases_playlists_path, class: "font-bold text-primary hover:text-secondary" do %>
+          <i class="fa-solid fa-compact-disc" style="color: #05a1ad;"></i> NEW RELEASES
+        <% end %>
+        <%= link_to root_path, class: "font-bold text-primary hover:text-secondary" do %>
+          <i class="fa-solid fa-compact-disc" style="color: #05a1ad;"></i> ALL PLAYLISTS
+        <% end %>
+        <%= link_to my_playlists_path, class: "font-bold text-primary hover:text-secondary" do %>
+        <i class="fa-solid fa-compact-disc" style="color: #05a1ad;"></i> MY PLAYLISTS
+        <% end %>
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 h-10 rounded-full bg-primary"></div>
           </label>
           <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 border-primary rounded-box w-52">
-            <li class="text-base font-bold text-primary">Playlists</li>
-            <li class="text-primary"><%= link_to 'My Playlists', my_playlists_path %></li>
-            <li class="text-primary"><%= link_to 'My GoodVibes', good_vibes_user_path(current_user) %></li>
-            <li class="text-base font-bold text-primary">Settings</li>
-            <li><%= link_to 'My Page', user_path(current_user), class: "text-primary" %></li>
-            <li><%= link_to 'Log Out', destroy_user_session_path, data: { turbo_method: :delete }, class: "font-bold text-error" %></li>
+            <li class="text-base font-bold text-primary">PLAYLISTS</li>
+            <li class="text-primary"><%= link_to 'MY PLAYLISTS ', my_playlists_path %></li>
+            <li class="text-primary"><%= link_to 'MY GOOD VIBES ', good_vibes_user_path(current_user) %></li>
+            <li class="text-base font-bold text-primary">SETTINGS</li>
+            <li><%= link_to 'MY PAGE', user_path(current_user), class: "text-primary" %></li>
+            <li><%= link_to 'LOG OUT', destroy_user_session_path, data: { turbo_method: :delete }, class: "font-bold text-error" %></li>
           </ul>
         </div>
       </div>
