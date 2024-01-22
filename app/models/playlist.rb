@@ -19,7 +19,7 @@ class Playlist < ApplicationRecord
 
   def tracks_count_within_limit
     if tracks.size < 5 || tracks.size > 20
-      errors.add(:tracks, "must be between 5 and 20")
+      errors.add(:tracks, :tracks_count_within_limit)
     end
   end
 
