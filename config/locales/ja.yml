@@ -1,7 +1,7 @@
 ja:
   activerecord:
     attributes:
-      playlist: "プレイリスト"
+      playlist:
         tracks: "トラック"
     errors:
       models:
@@ -9,4 +9,5 @@ ja:
           attributes:
             tracks:
               tracks_count_within_limit: "は5曲以上20曲以下にしてください"
+
 
