@@ -29,10 +29,14 @@ class PlaylistsController < ApplicationController
 
     if @playlist.save
       session.delete(:current_playlist_tracks)
-      redirect_to playlist_path(@playlist), notice: 'congratulations on releasing your playlist!🎉'
+      redirect_to playlist_path(@playlist), notice: '🎉Congratulations on releasing your playlist!🎉'
     else
-      flash.now[:alert] = @playlist.errors.full_messages.join(', ')
-      render :new
+      respond_to do |format|
+        format.turbo_stream do
+          flash.now[:alert] = @playlist.errors.full_messages.join(', ')
+          render turbo_stream: turbo_stream.replace("flash_messages", partial: "shared/flash")
+        end
+      end
     end
   end
 
