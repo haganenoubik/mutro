@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      playlist:
+        tracks: "トラック"
+    errors:
+      models:
+        playlist:
+          attributes:
+            tracks:
+              tracks_count_within_limit: "の曲数は5曲以上20曲以下にしてください"
+
