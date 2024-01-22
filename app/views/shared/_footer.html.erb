@@ -1,12 +1,11 @@
-<footer class="footer p-10 bg-base-100 text-base-content">
+<footer class="footer p-10 text-base-content">
   <aside>
     <p class="text-slate-500">Copyright © 2023 - All right reserved by Mutro</p>
   </aside>
-  <div class="footer-title text-secondary">
-    <%= link_to 'About Mutro', about_path %>
-  </div> 
-    <%= link_to 'お問い合わせ', 'https://forms.gle/BL9XpXKsqMpg4zgJA' %> 
+  <div class="footer-links flex gap-8 text-slate-600">
+    <%= link_to 'About "Mutro"', about_path, class: 'text-primary font-black' %>
+    <%= link_to 'お問い合わせ', 'https://forms.gle/BL9XpXKsqMpg4zgJA' %>
     <%= link_to '利用規約', terms_path %> 
     <%= link_to 'プライバシーポリシー', privacy_policy_path %>
-    </div>
+  </div>
 </footer>
