@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection do
       get :new_releases
       post :add_track_to_playlist
+      delete :remove_track_from_playlist
     end
     resources :tracks, controller: 'playlist_tracks', only: %i[destroy]
     resources :comments, only: %i[create]

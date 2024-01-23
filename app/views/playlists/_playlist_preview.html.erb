@@ -1,9 +1,11 @@
-<%= turbo_frame_tag "playlist_tracks" do %>
-  <div id="playlist-tracks">
+<%= turbo_frame_tag "playlist_preview" do %>
+  <div>
     <p class="text-center font-bold">Playlist ※5~20曲まで</p>
     <% @playlist.tracks.each do |track| %>
       <%= turbo_frame_tag dom_id(track) do %>
-        <%= render "playlists/track", track: track %>
+        <div class="flex justify-between items-center mb-2">
+          <%= render "playlists/track_with_remove_button", track: track %>
+        </div>
       <% end %>
     <% end %>
   </div>
