@@ -1,5 +1,7 @@
-<%= turbo_frame_tag dom_id(track) do %>
-  <div class="m-1">
+<div id="<%= dom_id(track) %>" class="flex justify-start items-center mb-2 gap-x-4">
+  <div class="flex-grow m-1 w-full md:w-1/2 lg:w-2/3">
       <iframe src="https://open.spotify.com/embed/track/<%= track.spotify_id %>" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
   </div>
-<% end %>
+  <%= link_to '削除', remove_track_from_playlist_playlists_path(track_id: track.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当にこの曲を削除しますか？' }, class: "btn btn-danger btn-sm" %>
+</div>
+
