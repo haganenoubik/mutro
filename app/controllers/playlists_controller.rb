@@ -70,9 +70,20 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.append('playlist_tracks', partial: 'playlists/track', locals: { track: @track })
+        render turbo_stream: turbo_stream.append('playlist_preview', partial: 'playlists/track', locals: { track: @track })
       end
     end
+  end
+
+  def remove_track_from_playlist
+    session[:current_playlist_tracks].delete(params[:track_id].to_i)
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.remove("track_#{params[:track_id]}")
+      end
+    end
+
   end
 
   def new_releases
