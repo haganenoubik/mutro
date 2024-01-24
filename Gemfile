@@ -55,6 +55,8 @@ gem 'dotenv-rails'
 
 gem 'kaminari'
 
+gem 'ransack'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
