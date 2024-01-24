@@ -3,9 +3,17 @@ import { Controller } from '@hotwired/stimulus';
 export default class extends Controller {
   connect() {
     this.searchInput = this.element.querySelector('input[type="text"]');
+    this.resultsTarget = this.element.querySelector('[data-autocomplete-target="results"]');
 
     this.searchInput.addEventListener('input', (event) => {
       this.performSearch(event.target.value);
+    });
+
+    this.searchInput.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();  // デフォルトの矢印キーの動作を防止
+        this.navigateResults(event.key);
+      }
     });
 
     const searchForm = this.element.closest('form');
@@ -51,6 +59,29 @@ export default class extends Controller {
       listItem.appendChild(link);
       resultsTarget.appendChild(listItem);
     });
+  }
+
+  navigateResults(key) {
+    const items = Array.from(this.resultsTarget.querySelectorAll('a'));
+    const activeIndex = items.findIndex(item => item.classList.contains('active'));
+
+    // アクティブなアイテムからクラスを削除
+    if (activeIndex !== -1) {
+      items[activeIndex].classList.remove('active', 'bg-cyan-100', 'rounded-lg');
+    }
+
+    let newIndex;
+    if (key === 'ArrowDown') {
+      newIndex = activeIndex >= 0 && activeIndex < items.length - 1 ? activeIndex + 1 : 0;
+    } else if (key === 'ArrowUp') {
+      newIndex = activeIndex > 0 ? activeIndex - 1 : items.length - 1;
+    }
+
+    // 新しいアイテムにクラスを追加
+    if (newIndex !== undefined) {
+      items[newIndex].classList.add('active', 'bg-cyan-100', 'rounded-lg');
+      items[newIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
 
   clearResults() {
