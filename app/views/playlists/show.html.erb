@@ -2,9 +2,11 @@
   <h1 class="text-xl font-bold text-primary text-center border-b border-primary my-8">PLAYLIST DETAILS</h1>
 
   <div class="mb-6">
+    <div class="text-center mb-4">
+      <p class="text-sm font-medium text-gray-500">Released by <%= @playlist.user.name %></p>
+    </div>
     <h1 class="text-center text-3xl font-black text-slate-600 mb-6"><%= @playlist.title %></h1>
     <%= simple_format(@playlist.description, {}, wrapper_tag: "p", class: "text-slate-600") %>
-
   </div>
 
   <div class="tracks">
@@ -24,7 +26,7 @@
   </div>
   <%= render partial: 'playlists/good_vibes_button', locals: { playlist: @playlist } %>
   <% if @playlist.user == current_user %>
-      <%= link_to "https://twitter.com/share?url=#{playlist_url(@playlist)}&text=🎉Congratulations on releasing your playlist!🎉 %0a【#{@playlist.title}】%0a %23Mutro%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Share to X" do %>
+      <%= link_to "https://twitter.com/share?url=#{playlist_url(@playlist)}&text=🎉 New playlist out now! 🎉 %0a【#{@playlist.title}】%0a %23Mutro%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Share to X" do %>
         <i class="fa-brands fa-x-twitter fa-xl"></i>
       <% end %>
       <%= link_to 'プレイリスト編集', edit_playlist_path(@playlist), class: 'btn btn-primary m-4' %>
