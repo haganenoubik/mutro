@@ -29,7 +29,7 @@ class PlaylistsController < ApplicationController
 
     if @playlist.save
       session.delete(:current_playlist_tracks)
-      redirect_to playlist_path(@playlist), notice: '🎉Congratulations on releasing your playlist!🎉'
+      redirect_to playlist_path(@playlist), notice: '🎉 New playlist out now! 🎉'
     else
       respond_to do |format|
         format.turbo_stream do
