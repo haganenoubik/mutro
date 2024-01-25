@@ -14,8 +14,8 @@
           <i class="fa-solid fa-compact-disc" style="color: #05a1ad;"></i> ALL PLAYLISTS
         <% end %>
         <div class="dropdown dropdown-end">
-          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 h-10 rounded-full bg-primary"></div>
+          <label tabindex="0" class="mr-4 ml-4">
+            <i class="fa-solid fa-2xl fa-bars" style="color: #00a2ae;"></i>
           </label>
           <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 border-primary rounded-box w-52">
             <li class="text-base font-bold text-primary">PLAYLISTS</li>
@@ -28,10 +28,8 @@
         </div>
       </div>
     <% else %>
-      <%= link_to new_user_session_path, class: "btn btn-ghost btn-circle avatar" do %>
-        <div class="avatar">
-          <div class="w-10 h-10 rounded-full bg-error"></div>
-        </div>
+      <%= link_to new_user_session_path, class: "mr-4" do %>
+          <i class="fa-solid fa-2xl fa-arrow-right-to-bracket" style="color: #ef857c;"></i>
       <% end %>
     <% end %>
   </div>
