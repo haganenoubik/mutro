@@ -34,7 +34,7 @@ class PlaylistsController < ApplicationController
       respond_to do |format|
         format.turbo_stream do
           flash.now[:alert] = @playlist.errors.full_messages.join(', ')
-          render turbo_stream: turbo_stream.replace("flash_messages", partial: "shared/flash")
+          render turbo_stream: turbo_stream.replace('flash_messages', partial: 'shared/flash')
         end
       end
     end
@@ -70,7 +70,8 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.append('playlist_preview', partial: 'playlists/track_with_remove_button', locals: { track: @track })
+        render turbo_stream: turbo_stream.append('playlist_preview', partial: 'playlists/track_with_remove_button',
+                                                                     locals: { track: @track })
       end
     end
   end
@@ -86,7 +87,7 @@ class PlaylistsController < ApplicationController
   end
 
   def new_releases
-    @playlists = Playlist.includes(:user).where("created_at >= ?", 12.hours.ago).order(created_at: :desc).page(params[:page])
+    @playlists = Playlist.includes(:user).where('created_at >= ?', 12.hours.ago).order(created_at: :desc).page(params[:page])
   end
 
   def my_playlists

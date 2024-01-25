@@ -7,7 +7,7 @@ class Playlist < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true, length: { maximum: 20 }
-  validates :description, presence: true, length: { maximum: 10000 }
+  validates :description, presence: true, length: { maximum: 10_000 }
   validate :tracks_count_within_limit
 
   enum status: {
@@ -18,9 +18,8 @@ class Playlist < ApplicationRecord
   private
 
   def tracks_count_within_limit
-    if tracks.size < 5 || tracks.size > 20
-      errors.add(:tracks, :tracks_count_within_limit)
-    end
-  end
+    return unless tracks.size < 5 || tracks.size > 20
 
+    errors.add(:tracks, :tracks_count_within_limit)
+  end
 end
