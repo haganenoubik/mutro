@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
+  get 'update_info', to: 'static_pages#update_info'
   
   get 'my_playlists', to: 'playlists#my_playlists', as: :my_playlists, only: %i[show]
 
