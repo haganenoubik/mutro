@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
   root 'playlists#index'
 
   get 'about', to: 'static_pages#about'
