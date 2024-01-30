@@ -42,3 +42,7 @@ ja:
         not_found_in_database: "メールアドレスまたはパスワードが違います。"
         already_authenticated: "ログインしてるよ！"
         unauthenticated: "ログインしてないよ！"
+    omniauth_callbacks:
+      success: "%{kind}で認証に成功しました。"
+      user:
+        success: "%{kind}アカウントでログインしました。"
