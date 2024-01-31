@@ -36,6 +36,7 @@ ja:
       user:
         signed_up: "アカウントを登録しました。"
         updated: "プロフィールを更新しました。"
+        already_signed_out: "ログアウトしました。"
         destroyed: "アカウントが正常に削除されました。"
     failure:
       user:
