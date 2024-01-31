@@ -10,7 +10,7 @@
       <p class="font-bold mb-4">About Me</p>
         <div class="bg-slate-100 shadow-lg p-4 mb-4">
           <% if current_user.bio.present? %>
-            <p class="text-gray-600"><%= current_user.bio %></p>
+            <%= simple_format(current_user.bio, class: "text-gray-600") %>
           <% else %>
             <p class="text-gray-600">プロフィール情報はありません。</p>
           <% end %>
