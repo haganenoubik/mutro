@@ -2,7 +2,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'Mutro',
-      title: 'プレイリスト作成・シェアサービス',
+      title: 'いつもより少しだけ時間をかけて音楽と向き合ってみませんか？',
       reverse: true,
       charset: 'utf-8',
       description: 'Mutroはプレイリストを作成・シェア・視聴できるサービスです。',
