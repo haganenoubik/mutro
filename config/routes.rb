@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { 
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
   root 'playlists#index'
 
   get 'about', to: 'static_pages#about'
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
+  get 'update_info', to: 'static_pages#update_info'
   
   get 'my_playlists', to: 'playlists#my_playlists', as: :my_playlists, only: %i[show]
 

@@ -36,9 +36,15 @@ ja:
       user:
         signed_up: "アカウントを登録しました。"
         updated: "プロフィールを更新しました。"
+        already_signed_out: "ログアウトしました。"
+        destroyed: "アカウントが正常に削除されました。"
     failure:
       user:
         invalid: "メールアドレスとパスワードが違います。"
         not_found_in_database: "メールアドレスまたはパスワードが違います。"
         already_authenticated: "ログインしてるよ！"
         unauthenticated: "ログインしてないよ！"
+    omniauth_callbacks:
+      success: "%{kind}で認証に成功しました。"
+      user:
+        success: "%{kind}アカウントでログインしました。"
