@@ -3,6 +3,8 @@ ja:
     attributes:
       playlist:
         tracks: "トラック"
+        title: "TITLE"
+        description: "RECOMMEND"
     errors:
       models:
         playlist:
