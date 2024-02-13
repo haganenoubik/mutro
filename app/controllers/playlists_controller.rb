@@ -95,6 +95,10 @@ class PlaylistsController < ApplicationController
     @playlists = current_user.playlists.order(created_at: :desc).page(params[:page])
   end
 
+  def trend_picks
+    @playlists = Playlist.most_popular.page(params[:page])
+  end
+
   private
 
   def playlist_params
