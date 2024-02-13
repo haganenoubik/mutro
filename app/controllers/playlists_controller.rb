@@ -7,6 +7,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
+    @playlist.increment!(:clicks_count)
   end
 
   def new
@@ -92,6 +93,10 @@ class PlaylistsController < ApplicationController
 
   def my_playlists
     @playlists = current_user.playlists.order(created_at: :desc).page(params[:page])
+  end
+
+  def trend_picks
+    @playlists = Playlist.most_popular.page(params[:page])
   end
 
   private
