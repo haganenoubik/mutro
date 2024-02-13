@@ -15,6 +15,10 @@ class Playlist < ApplicationRecord
     published: 1
   }
 
+  def self.most_popular(limit = 8)
+    order(clicks_count: :desc).limit(limit)
+  end
+
   private
 
   def tracks_count_within_limit
