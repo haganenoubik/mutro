@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'update_info', to: 'static_pages#update_info'
   
-  get 'my_playlists', to: 'playlists#my_playlists', as: :my_playlists, only: %i[show]
-  get 'trend_picks', to: 'playlists#trend_picks', as: :trend_picks, only: %i[show]
+  get 'my_playlists', to: 'playlists#my_playlists', as: :my_playlists
+  get 'trend_picks', to: 'playlists#trend_picks', as: :trend_picks
+  get 'todays_picks', to: 'playlists#todays_picks', as: :todays_picks
 
   resources :playlists do
     collection do
