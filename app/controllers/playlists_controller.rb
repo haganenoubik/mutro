@@ -96,7 +96,11 @@ class PlaylistsController < ApplicationController
   end
 
   def trend_picks
-    @playlists = Playlist.most_popular.page(params[:page])
+    @playlists = Playlist.most_popular.page(params[:page]).per(8)
+  end
+
+  def todays_picks
+    @playlists = Playlist.todays_picks.page(params[:page]).per(8)
   end
 
   private
