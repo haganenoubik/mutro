@@ -19,6 +19,12 @@ class Playlist < ApplicationRecord
     order(clicks_count: :desc).limit(limit)
   end
 
+  def self.todays_picks(limit = 8)
+    seed = Date.today.to_s.hash
+    ids = Playlist.pluck(:id).shuffle(random: Random.new(seed))
+    Playlist.where(id: ids.take(limit))
+  end
+
   private
 
   def tracks_count_within_limit
