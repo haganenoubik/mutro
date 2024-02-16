@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_16_045359) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_16_074037) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_16_045359) do
     t.string "image_filename"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "moods_playlists", id: false, force: :cascade do |t|
+    t.bigint "playlist_id", null: false
+    t.bigint "mood_id", null: false
   end
 
   create_table "playlist_tracks", force: :cascade do |t|
