@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @playlists = Playlist.includes(:user).order(created_at: :desc).page(params[:page])
+    @playlists = Playlist.includes(:user, :mood).order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -88,24 +88,24 @@ class PlaylistsController < ApplicationController
   end
 
   def new_releases
-    @playlists = Playlist.includes(:user).where('created_at >= ?', 12.hours.ago).order(created_at: :desc).page(params[:page])
+    @playlists = Playlist.includes(:user, :mood).where('created_at >= ?', 12.hours.ago).order(created_at: :desc).page(params[:page])
   end
 
   def my_playlists
-    @playlists = current_user.playlists.order(created_at: :desc).page(params[:page])
+    @playlists = current_user.playlists.includes(:user, :mood).order(created_at: :desc).page(params[:page])
   end
 
   def trend_picks
-    @playlists = Playlist.most_popular.page(params[:page]).per(8)
+    @playlists = Playlist.includes(:user, :mood).most_popular.page(params[:page]).per(8)
   end
 
   def todays_picks
-    @playlists = Playlist.todays_picks.page(params[:page]).per(8)
+    @playlists = Playlist.includes(:user, :mood).todays_picks.page(params[:page]).per(8)
   end
 
   private
 
   def playlist_params
-    params.require(:playlist).permit(:title, :description)
+    params.require(:playlist).permit(:title, :description, :mood_id)
   end
 end
