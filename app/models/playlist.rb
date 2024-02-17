@@ -4,7 +4,7 @@ class Playlist < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :good_vibes, dependent: :destroy
   has_many :good_vibed_users, through: :good_vibes, source: :user
-  belongs_to :moods, optional: true
+  belongs_to :mood, optional: true
   belongs_to :user
 
   validates :title, presence: true, length: { maximum: 20 }
