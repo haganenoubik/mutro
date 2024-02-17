@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_17_062157) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_17_065318) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_062157) do
     t.datetime "updated_at", null: false
     t.string "status"
     t.integer "clicks_count", default: 0
+    t.bigint "mood_id"
+    t.index ["mood_id"], name: "index_playlists_on_mood_id"
     t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
@@ -92,5 +94,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_062157) do
   add_foreign_key "good_vibes", "users"
   add_foreign_key "playlist_tracks", "playlists"
   add_foreign_key "playlist_tracks", "tracks"
+  add_foreign_key "playlists", "moods"
   add_foreign_key "playlists", "users"
 end
