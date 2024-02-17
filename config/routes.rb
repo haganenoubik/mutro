@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  constraints host: 'www.mutro.onrender.com' do
+  constraints host: 'mutro.onrender.com' do
     get '(*any)', to: redirect { |params, _| "https://www.mutro.net/#{params[:any]}" }
 end
 
