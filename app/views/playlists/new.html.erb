@@ -28,6 +28,20 @@
         <%= f.text_area :description, required: true, placeholder: "プレイリストを聴いてほしいシチュエーション、選んだ曲の思い出やアーティストへの思いを自由に綴ってください！",  class: "form-control w-full h-64 border-2 border-primary p-2 rounded-lg" %>
       </div>
 
+      <div class="w-full text-center p-2 mt-4">
+        <%= f.label :mood_id, class: "text-lg font-bold text-primary" %>
+        <div class="flex flex-wrap justify-center">
+          <% Mood.all.each do |mood| %>
+            <div class="form-control">
+              <label class="label cursor-pointer">
+                <span class="label-text"><%= mood.name %></span>
+                <%= f.radio_button :mood_id, mood.id, class: "radio #{mood_radio_color(mood.name)}" %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
       <div class="w-full p-2 mt-4">
         <%= f.submit "Release a playlist!", class: "btn bg-gradient-to-r from-primary to-accent text-white py-2 px-4 text-lg w-full" %>
       </div>
