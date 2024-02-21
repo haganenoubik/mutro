@@ -4,7 +4,7 @@
       <%= f.search_field :search, value: params[:search], placeholder: "アーティスト名 or 曲名で検索してください", class: "w-1/2 p-3 mx-auto text-sm border-primary rounded-lg bg-slate-50 border-2", data: { autocomplete_target: "input" }, type: "text", autofocus: true, autocomplete: "off", required: true %>
 
       <ul class="list-group" data-autocomplete-target="results"></ul>
-      <%= f.submit "Search", class: "btn btn-sm btn-primary mx-auto text-sm rounded-lg mt-3" %>
+      <%= f.submit "検索", class: "btn btn-sm btn-primary mx-auto text-sm rounded-lg mt-3" %>
     </div>
   <% end %>
 <% end %>
