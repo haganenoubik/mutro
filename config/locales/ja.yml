@@ -3,13 +3,16 @@ ja:
     attributes:
       playlist:
         tracks: "トラック"
-        title: "TITLE"
-        description: "RECOMMEND"
+        title: "タイトル"
+        description: "レコメンド"
+        mood: "ムード"
     errors:
       models:
         playlist:
           attributes:
             tracks:
               tracks_count_within_limit: "は5曲以上20曲以下にしてください"
+            title:
+              too_long: "は20文字以内にしてください"
 
 
