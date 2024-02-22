@@ -88,7 +88,8 @@ class PlaylistsController < ApplicationController
   end
 
   def new_releases
-    @playlists = Playlist.includes(:user, :mood).where('created_at >= ?', 12.hours.ago).order(created_at: :desc).page(params[:page])
+    @playlists = Playlist.includes(:user, :mood).where('created_at >= ?',
+                                                       12.hours.ago).order(created_at: :desc).page(params[:page])
   end
 
   def my_playlists
