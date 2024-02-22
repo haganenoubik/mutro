@@ -3,6 +3,7 @@
   <head>
     <title>Mutro</title>
     <%= favicon_link_tag asset_path('favicon.ico') %>
+    <link rel="manifest" href="/manifest.json">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -34,4 +35,17 @@
     </div>
     <%= render 'shared/footer' %>
   </body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service_worker.js')
+          .then((registration) => {
+            console.log('Service Worker registered:', registration);
+          })
+          .catch((error) => {
+             console.error('Service Worker registration failed:', error);
+         });
+      });
+    }
+  </script>
 </html>
