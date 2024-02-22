@@ -21,7 +21,7 @@ class Playlist < ApplicationRecord
   end
 
   def self.todays_picks(limit = 8)
-    seed = Date.today.to_s.hash
+    seed = Time.zone.today.to_s.hash
     ids = Playlist.pluck(:id).shuffle(random: Random.new(seed))
     Playlist.where(id: ids.take(limit))
   end
