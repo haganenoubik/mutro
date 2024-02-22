@@ -1,27 +1,27 @@
 <div class="container mx-auto px-4">
   <h1 class="text-xl font-bold text-primary text-center border-b border-primary my-8">プレイリスト詳細</h1>
 
-  <div class="mb-6">
+  <div class="mb-6 text-slate-600">
     <div class="text-center mb-4">
-      <p class="text-sm font-medium text-gray-500">Released by <%= @playlist.user.name %></p>
+      <p class="text-sm font-medium">Released by <%= @playlist.user.name %></p>
     </div>
-    <h1 class="text-center text-3xl font-black text-slate-600 mb-6"><%= @playlist.title %></h1>
-    <%= simple_format(@playlist.description, {}, wrapper_tag: "p", class: "text-slate-600") %>
+    <h1 class="text-center text-3xl font-black mb-6"><%= @playlist.title %></h1>
+    <%= simple_format(@playlist.description, {}, wrapper_tag: "p") %>
   </div>
 
-  <div class="tracks">
+  <div class="tracks text-slate-600">
     <% if @playlist.tracks.any? %>
-      <h2 class="text-center text-xl text-slate-600 font-bold mb-4">トラック一覧</h2>
+      <h2 class="text-center text-xl font-bold mb-4">トラック一覧</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <% @playlist.tracks.each do |track| %>
           <div class="track bg-white rounded-lg shadow p-4">
             <%= render 'playlists/track', track: track %>
-            <p class="mt-2 text-sm font-medium text-gray-800"><%= track.title %> - <%= track.artist %></p>
+            <p class="mt-2 text-center text-sm text-medium"><%= track.title %> - <%= track.artist %></p>
           </div>
         <% end %>
       </div>
     <% else %>
-      <p class="text-gray-600">This playlist has no tracks yet.</p>
+      <p>This playlist has no tracks yet.</p>
     <% end %>
   </div>
   <%= render partial: 'playlists/good_vibes_button', locals: { playlist: @playlist } %>
@@ -35,12 +35,12 @@
     <% end %>
   <% end %>
   <div class="flex justify-center mt-8">
-  <%= link_to 'プレイリスト一覧へ戻る', root_path, class: 'btn btn-outline btn-primary rounded-lg' %>
+    <%= link_to 'プレイリスト一覧へ戻る', root_path, class: 'btn btn-outline btn-primary rounded-lg' %>
   </div>
 </div>
 
-<div class="comments mt-8">
-  <h3 class="text-2xl font-bold text-slate-600 mb-4">コメント</h3>
+<div class="comments mt-8 text-slate-600">
+  <h3 class="text-2xl font-bold mb-4">コメント</h3>
   <div class="space-y-4">
     <% @playlist.comments.each do |comment| %>
       <div class="p-4 bg-white rounded-lg shadow">
@@ -61,3 +61,4 @@
     </div>
   <% end %>
 </div>
+
