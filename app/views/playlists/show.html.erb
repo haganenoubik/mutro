@@ -1,5 +1,5 @@
 <div class="container mx-auto px-4">
-  <h1 class="text-xl font-bold text-primary text-center border-b border-primary my-8">PLAYLIST DETAILS</h1>
+  <h1 class="text-xl font-bold text-primary text-center border-b border-primary my-8">プレイリスト詳細</h1>
 
   <div class="mb-6">
     <div class="text-center mb-4">
@@ -11,7 +11,7 @@
 
   <div class="tracks">
     <% if @playlist.tracks.any? %>
-      <h2 class="text-center text-xl text-slate-600 font-bold mb-4">TRACKS</h2>
+      <h2 class="text-center text-xl text-slate-600 font-bold mb-4">トラック一覧</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <% @playlist.tracks.each do |track| %>
           <div class="track bg-white rounded-lg shadow p-4">
@@ -35,12 +35,12 @@
     <% end %>
   <% end %>
   <div class="flex justify-center mt-8">
-  <%= link_to 'Back to All Playlists', root_path, class: 'btn btn-outline btn-primary rounded-lg' %>
+  <%= link_to 'プレイリスト一覧へ戻る', root_path, class: 'btn btn-outline btn-primary rounded-lg' %>
   </div>
 </div>
 
 <div class="comments mt-8">
-  <h3 class="text-2xl font-bold text-slate-600 mb-4">COMMENTS</h3>
+  <h3 class="text-2xl font-bold text-slate-600 mb-4">コメント</h3>
   <div class="space-y-4">
     <% @playlist.comments.each do |comment| %>
       <div class="p-4 bg-white rounded-lg shadow">
