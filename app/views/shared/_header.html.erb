@@ -18,6 +18,8 @@
         <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 border-primary rounded-box w-52">
           <li class="text-base font-bold text-primary">プレイリストメニュー</li>
           <li class="text-primary">
+            <%= link_to 'プレイリスト一覧', root_path, class: "text-primary hover:text-secondary" %>
+          <li class="text-primary">
             <%= link_to '新着リリース', new_releases_playlists_path, class: "text-primary hover:text-secondary" %>
           </li>
           <li class="text-primary">
