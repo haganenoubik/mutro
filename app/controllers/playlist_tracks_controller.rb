@@ -5,9 +5,9 @@ class PlaylistTracksController < ApplicationController
   def destroy
     if @playlist.tracks.count > 5
       @playlist.tracks.delete(@track)
-      redirect_to edit_playlist_path(@playlist), notice: '曲が削除されました'
+      redirect_to edit_playlist_path(@playlist), notice: I18n.t('notices.tracks_deleted')
     else
-      redirect_to edit_playlist_path(@playlist), alert: 'プレイリストは5曲以上にしてね！'
+      redirect_to edit_playlist_path(@playlist), alert: I18n.t('notices.minimum_tracks')
     end
   end
 

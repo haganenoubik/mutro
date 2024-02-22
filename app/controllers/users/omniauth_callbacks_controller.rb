@@ -16,6 +16,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to root_path, alert: 'Authentication failed, please try again.'
+    redirect_to root_path, alert: I18n.t('notices.auth_failed')
   end
 end
