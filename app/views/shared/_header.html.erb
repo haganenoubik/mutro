@@ -36,9 +36,7 @@
         </ul>
       </div>
     <% else %>
-      <%= link_to new_user_session_path, class: "mr-4" do %>
-        <i class="fa-solid fa-2xl fa-arrow-right-to-bracket" style="color: #ef857c;"></i>
-      <% end %>
+      <%= link_to 'ログインはこちら', new_user_session_path, class: "btn btn-sm btn-outline btn-error mr-4" %>
     <% end %>
   </div>
 </div>
