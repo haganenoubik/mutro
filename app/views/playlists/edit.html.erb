@@ -1,5 +1,5 @@
 <div class="container mx-auto px-4">
-  <h1 class="text-xl font-bold text-primary text-center border-b border-primary my-8">PLAYLIST EDIT</h1>
+  <h1 class="text-xl font-bold text-primary text-center border-b border-primary my-8">プレイリスト編集</h1>
 
   <%= form_with model: @playlist, url: playlist_path(@playlist), method: :patch, class: "w-full max-w-2xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" do |f| %>
     <div class="mb-4">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="tracks-list mt-4">
-      <h2 class="text-lg font-bold mb-2">Tracks</h2>
+      <h2 class="text-lg font-bold mb-2">トラック一覧</h2>
       <ul>
         <% @playlist.tracks.each do |track| %>
           <li class="flex items-center justify-between mb-2 bg-gray-100 p-2 rounded">
@@ -25,7 +25,7 @@
     </div>
 
     <div class="mb-4">
-      <%= f.label :mood_id, class: "block text-gray-700 text-lg font-bold mb-2" %>
+      <%= f.label :mood, class: "block text-gray-700 text-lg font-bold mb-2" %>
       <% Mood.all.each do |mood| %>
         <div class="form-control">
           <label class="label cursor-pointer">
