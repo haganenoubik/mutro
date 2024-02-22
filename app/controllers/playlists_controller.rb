@@ -6,8 +6,9 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    @playlist = Playlist.find(params[:id])
-    @playlist.increment!(:clicks_count)
+    @playlist = Playlist.includes(:user).find(params[:id])
+    @playlist.increment(:clicks_count)
+    @playlist.save
   end
 
   def new
@@ -30,7 +31,7 @@ class PlaylistsController < ApplicationController
 
     if @playlist.save
       session.delete(:current_playlist_tracks)
-      redirect_to playlist_path(@playlist), notice: '🎉 New playlist out now! 🎉'
+      redirect_to playlist_path(@playlist), notice: I18n.t('notices.new_playlist')
     else
       respond_to do |format|
         format.turbo_stream do
@@ -45,9 +46,9 @@ class PlaylistsController < ApplicationController
     @playlist = current_user.playlists.find(params[:id])
 
     if @playlist.update(playlist_params)
-      redirect_to playlist_path(@playlist), notice: 'プレイリストが更新されました'
+      redirect_to playlist_path(@playlist), notice: I18n.t('notices.playlist_updated')
     else
-      flash.now[:alert] = 'プレイリストの更新に失敗しました'
+      flash.now[:alert] = I18n.t('notices.playlist_update_failed')
       render :edit
     end
   end
@@ -55,7 +56,7 @@ class PlaylistsController < ApplicationController
   def destroy
     @playlist = current_user.playlists.find(params[:id])
     @playlist.destroy
-    redirect_to playlists_path, notice: 'プレイリストが削除されました'
+    redirect_to playlists_path, notice: I18n.t('notices.playlist_deleted')
   end
 
   def add_track_to_playlist
@@ -88,7 +89,8 @@ class PlaylistsController < ApplicationController
   end
 
   def new_releases
-    @playlists = Playlist.includes(:user, :mood).where('created_at >= ?', 12.hours.ago).order(created_at: :desc).page(params[:page])
+    @playlists = Playlist.includes(:user, :mood).where('created_at >= ?',
+                                                       12.hours.ago).order(created_at: :desc).page(params[:page])
   end
 
   def my_playlists

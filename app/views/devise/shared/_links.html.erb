@@ -1,12 +1,12 @@
 <%- if controller_name != 'sessions' %>
-  <div class="font-bold mb-4">
-    <%= link_to "ログイン", new_session_path(resource_name) %><br />
+  <div class="font-bold text-slate-600 mb-4">
+    <%= link_to "ログインはこちら", new_session_path(resource_name) %><br />
   </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <div class="font-bold text-error mb-4">
-      <%= link_to "ユーザー登録", new_registration_path(resource_name) %><br />
+  <div class="font-bold text-slate-600 mb-4">
+      <%= link_to "ユーザー登録はこちら", new_registration_path(resource_name) %><br />
     </div>
 <% end %>
 

@@ -11,16 +11,18 @@
   <%= render 'shared/flash' %>
 <% end %>
 
-<div class="flex justify-center items-start ml-4">
-  <div class="w-full lg:w-1/3 xl:w-2/3 mx-8 bg-white text-primary rounded-lg shadow p-4 max-h-[74vh] overflow-y-auto">
+<div class="flex flex-col md:flex-row justify-center items-start">
+  <div class="w-full lg:w-1/2 xl:w-1/2 bg-white text-primary rounded-lg shadow p-4 max-h-[74vh] overflow-y-auto">
     <%= render 'playlists/playlist_preview', playlist: @playlist %>
   </div>
 
-  <div class="w-full lg:w-2/3 mx-8 bg-white rounded-lg shadow p-4 mb-4">
+  <div class="w-full lg:w-1/2 bg-white rounded-lg shadow p-4 mb-4">
     <%= form_with model: @playlist, url: playlists_path, method: :post, class: "flex flex-col items-center" do |f| %>
       <div class="w-full text-center p-2">
         <%= f.label :title, class: "text-lg font-bold text-primary" %>
-        <%= f.text_field :title, required: true, placeholder: "プレイリスト名は20文字まで", class: "form-control border-2 border-primary w-full p-2 rounded-lg" %>
+        <div class="flex justify-center items-center">
+          <%= f.text_field :title, required: true, placeholder: "タイトルは20文字まで", class: "form-control border-2 border-primary p-2 rounded-lg", style: "width: 340px;" %>
+        </div>
       </div>
 
       <div class="w-full text-center p-2 mt-4">
@@ -28,19 +30,19 @@
         <%= f.text_area :description, required: true, placeholder: "プレイリストを聴いてほしいシチュエーション、選んだ曲の思い出やアーティストへの思いを自由に綴ってください！",  class: "form-control w-full h-64 border-2 border-primary p-2 rounded-lg" %>
       </div>
 
-      <div class="w-full text-center p-2 mt-4">
-        <%= f.label :mood_id, class: "text-lg font-bold text-primary" %>
-        <div class="flex flex-wrap justify-center">
-          <% Mood.all.each do |mood| %>
-            <div class="form-control">
-              <label class="label cursor-pointer">
-                <span class="label-text"><%= mood.name %></span>
-                <%= f.radio_button :mood_id, mood.id, class: "radio #{mood_radio_color(mood.name)}" %>
-              </label>
-            </div>
-          <% end %>
-        </div>
+    <div class="w-full text-center p-2 mt-4">
+      <%= f.label :mood, class: "text-lg font-bold text-primary" %>
+      <div class="flex flex-wrap justify-center">
+        <% Mood.all.each do |mood| %>
+          <div class="form-control w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 px-2">
+            <label class="label cursor-pointer flex flex-row justify-start items-center">
+              <%= f.radio_button :mood_id, mood.id, class: "radio #{mood_radio_color(mood.name)} mb-1 sm:mb-0 sm:mr-2" %>
+              <span class="label-text"><%= mood.name %></span>
+            </label>
+          </div>
+        <% end %>
       </div>
+    </div>
 
       <div class="w-full p-2 mt-4">
         <%= f.submit "Release a playlist!", class: "btn bg-gradient-to-r from-primary to-accent text-white py-2 px-4 text-lg w-full" %>

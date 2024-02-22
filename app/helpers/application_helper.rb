@@ -21,7 +21,7 @@ module ApplicationHelper
       twitter: {
         card: 'summary_large_image',
         site: '@',
-        image: image_url('mutro_ogp.png'),
+        image: image_url('mutro_ogp.png')
       }
     }
   end
