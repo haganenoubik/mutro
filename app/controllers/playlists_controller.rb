@@ -7,7 +7,8 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
-    @playlist.increment!(:clicks_count)
+    @playlist.increment(:clicks_count)
+    @playlist.save
   end
 
   def new
