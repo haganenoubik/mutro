@@ -18,10 +18,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     redirect_to root_path, alert: 'Authentication failed, please try again.'
   end
-
-  private
-
-  def auth
-    auth = request.env['omniauth.auth']
-  end
 end
