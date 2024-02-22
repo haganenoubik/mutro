@@ -1,9 +1,10 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "text-slate-600 mt-4 ml-4" }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="m-4">
+  <div>
     <%= f.label :name, class: 'font-bold' %><br />
     <%= f.text_field :name, class: "input input-sm input-bordered", autocomplete: "name", autofocus: true %>
+  </div>
 
   <div class="field">
     <%= f.label :bio, class: 'font-bold' %><br />
@@ -38,5 +39,10 @@
   </div>
 <% end %>
 
-<div><%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn btn-sm btn-error text-white mb-2' %></div>
-<div class=" flex justify-center"><%= link_to "マイページに戻る", user_path(current_user), class: 'btn btn-sm btn-outline btn-primary mt-4' %></div>
+<div class="text-slate-600 ml-4">
+  <%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn btn-sm btn-error text-white mb-2' %>
+</div>
+<div class="flex justify-center text-slate-600">
+  <%= link_to "マイページに戻る", user_path(current_user), class: 'btn btn-sm btn-outline btn-primary mt-4' %>
+</div>
+
