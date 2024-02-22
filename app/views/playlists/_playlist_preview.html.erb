@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "playlist_preview" do %>
   <div>
-    <p class="text-center font-bold">PLAYLIST ※5~20曲まで</p>
+    <p class="text-center font-bold">作成中のプレイリスト ※5~20曲まで</p>
     <% @playlist.tracks.each do |track| %>
       <%= turbo_frame_tag dom_id(track) do %>
         <div class="flex justify-between items-center mb-2">
