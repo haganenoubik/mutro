@@ -13,7 +13,7 @@ ja:
             tracks:
               tracks_count_within_limit: "は5曲以上20曲以下にしてください"
             title:
-              too_long: "は20文字以内にしてください"
+              too_long: "は30文字以内にしてください"
   notices:
     comment_added: "コメントしました。"
     comment_failed: "コメントに失敗しました。"
