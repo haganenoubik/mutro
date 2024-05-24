@@ -12,17 +12,7 @@
       <%= f.text_area :description, required: true, class: "focus:shadow-outline mb-3 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none", rows: 4 %>
     </div>
 
-    <div class="tracks-list mt-4">
-      <h2 class="mb-2 text-lg font-bold text-gray-700">トラック一覧</h2>
-      <ul>
-        <% @playlist.tracks.each do |track| %>
-          <li class="mb-2 flex items-center justify-between rounded bg-gray-100 p-2">
-            <span class="text-gray-800"><%= track.title %> - <%= track.artist %></span>
-            <%= link_to '削除', playlist_track_path(track.id, playlist_id: @playlist.id), data: { turbo_method: :delete, turbo_confirm: 'この曲を削除しますか？' }, class: "btn btn-error text-white" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <%= render 'playlists/tracks_list', playlist: @playlist %>
 
     <div class="mb-4">
       <%= f.label :mood, class: "mb-2 block text-lg font-bold text-gray-700" %>
