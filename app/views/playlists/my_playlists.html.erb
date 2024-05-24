@@ -1,14 +1,13 @@
 <div class="container mx-auto px-4">
-  <h1 class="text-xl font-bold text-primary border-b border-primary text-center my-8">MY PLAYLISTS</h1>
-  
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
+  <h1 class="my-8 text-center text-xl font-bold text-primary border-b border-primary">プレイリスト一覧</h1>
+
+  <div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-4">
     <% @playlists.each do |playlist| %>
       <%= render 'playlists/playlist', playlist: playlist %>
     <% end %>
   </div>
 </div>
 
-<div class="flex justify-center">
+<div class="flex justify-center text-gray-600">
   <%= paginate @playlists %>
 </div>
-

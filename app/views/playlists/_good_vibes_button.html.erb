@@ -1,15 +1,14 @@
 <div id="good_vibes_button" class="mt-4">
   <% if user_signed_in? %>
     <% if current_user.good_vibed?(@playlist) %>
-      <%= button_to playlist_good_vibe_path(@playlist, current_user.good_vibe_for(@playlist)), method: :delete, data: { turbo_method: :delete }, class: "btn btn-lg btn-circle btn-error text-xs text-white" do %>
+      <%= button_to playlist_good_vibe_path(@playlist, current_user.good_vibe_for(@playlist)), method: :delete, data: { turbo_method: :delete }, class: "btn btn-error btn-circle btn-lg text-xs text-white" do %>
         Good Vibes</br>
         ⚡️
       <% end %>
     <% else %>
-      <%= button_to playlist_good_vibes_path(@playlist), data: { turbo_method: :post }, class: "btn btn-outline btn-lg btn-circle btn-primary text-xs" do %>
+      <%= button_to playlist_good_vibes_path(@playlist), data: { turbo_method: :post }, class: "btn btn-outline btn-primary btn-circle btn-lg text-xs" do %>
         Good Vibes?
       <% end %>
     <% end %>
   <% end %>
 </div>
-
