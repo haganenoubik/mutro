@@ -1,7 +1,7 @@
 <%= turbo_frame_tag 'search_form_frame' do %>
   <%= form_with url: search_tracks_path, method: :get, data: { turbo_frame: 'search_results' } do |f| %>
-    <div class="mt-4 flex flex-col items-center justify-center" data-controller="autocomplete" data-autocomplete-url-value="<%= search_tracks_path(format: :json) %>" role="combobox">
-      <%= f.search_field :search, value: params[:search], placeholder: "アーティスト名 or 曲名で検索してください", class: "w-1/2 p-3 mx-auto text-sm border-primary rounded-lg bg-slate-50 border-2", data: { autocomplete_target: "input" }, type: "text", autofocus: true, autocomplete: "off", required: true %>
+    <div class="flex flex-col items-center justify-center mt-4" data-controller="autocomplete" data-autocomplete-url-value="<%= search_tracks_path(format: :json) %>" role="combobox">
+      <%= f.search_field :search, value: params[:search], placeholder: "アーティスト名 or 曲名で検索してください", class: "w-1/2 p-3 mx-auto text-sm border-2 border-primary rounded-lg bg-slate-50", data: { autocomplete_target: "input" }, type: "text", autofocus: true, autocomplete: "off", required: true %>
 
       <ul class="list-group" data-autocomplete-target="results"></ul>
       <%= f.submit "検索", class: "btn btn-sm btn-primary mx-auto text-sm rounded-lg mt-3" %>

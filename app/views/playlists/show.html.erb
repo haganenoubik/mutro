@@ -1,22 +1,22 @@
 <div class="container mx-auto px-4">
-  <h1 class="text-xl font-bold text-primary text-center border-b border-primary my-8">プレイリスト詳細</h1>
+  <h1 class="my-8 text-center text-xl font-bold text-primary border-b border-primary">プレイリスト詳細</h1>
 
   <div class="mb-6 text-slate-600">
-    <div class="text-center mb-4">
+    <div class="mb-4 text-center">
       <p class="text-sm font-medium">Released by <%= @playlist.user.name %></p>
     </div>
-    <h1 class="text-center text-3xl font-black mb-6"><%= @playlist.title %></h1>
+    <h1 class="mb-6 text-center text-3xl font-black"><%= @playlist.title %></h1>
     <%= simple_format(@playlist.description, {}, wrapper_tag: "p") %>
   </div>
 
   <div class="tracks text-slate-600">
     <% if @playlist.tracks.any? %>
-      <h2 class="text-center text-xl font-bold mb-4">トラック一覧</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <h2 class="mb-4 text-center text-xl font-bold">トラック一覧</h2>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         <% @playlist.tracks.each do |track| %>
-          <div class="track bg-white rounded-lg shadow p-4">
+          <div class="track bg-white p-4 rounded-lg shadow">
             <%= render 'playlists/track', track: track %>
-            <p class="mt-2 text-center text-sm text-medium"><%= track.title %> - <%= track.artist %></p>
+            <p class="mt-2 text-center text-sm font-medium"><%= track.title %> - <%= track.artist %></p>
           </div>
         <% end %>
       </div>
@@ -24,27 +24,28 @@
       <p>This playlist has no tracks yet.</p>
     <% end %>
   </div>
+
   <%= render partial: 'playlists/good_vibes_button', locals: { playlist: @playlist } %>
+
   <% if @playlist.user == current_user %>
-      <%= link_to "https://twitter.com/share?url=#{playlist_url(@playlist)}&text=🎉 New playlist out now! 🎉 %0a【#{@playlist.title}】%0a %23Mutro%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Share to X" do %>
-        <i class="fa-brands fa-x-twitter fa-xl"></i>
-      <% end %>
-      <%= link_to 'プレイリスト編集', edit_playlist_path(@playlist), class: 'btn btn-primary m-4' %>
-    <% if current_user == @playlist.user %>
-      <%= link_to 'プレイリストを削除', playlist_path(@playlist), data: { turbo_method: :delete, turbo_confirm: 'プレイリストを削除しますか？' }, class: "btn btn-error text-white" %>
+    <%= link_to "https://twitter.com/share?url=#{playlist_url(@playlist)}&text=🎉 New playlist out now! 🎉 %0a【#{@playlist.title}】%0a %23Mutro%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Share to X" do %>
+      <i class="fa-brands fa-x-twitter fa-xl"></i>
     <% end %>
+    <%= link_to 'プレイリスト編集', edit_playlist_path(@playlist), class: 'btn btn-primary m-4' %>
+    <%= link_to 'プレイリストを削除', playlist_path(@playlist), data: { turbo_method: :delete, turbo_confirm: 'プレイリストを削除しますか？' }, class: "btn btn-error text-white" %>
   <% end %>
+
   <div class="flex justify-center mt-8">
     <%= link_to 'プレイリスト一覧へ戻る', root_path, class: 'btn btn-outline btn-primary rounded-lg' %>
   </div>
 </div>
 
-<div class="comments mt-8 text-slate-600">
-  <h3 class="text-2xl font-bold mb-4">コメント</h3>
+<div class="mt-8 comments text-slate-600">
+  <h3 class="mb-4 text-2xl font-bold">コメント</h3>
   <div class="space-y-4">
     <% @playlist.comments.each do |comment| %>
       <div class="p-4 bg-white rounded-lg shadow">
-        <p class="font-bold text-primary mb-2"><%= comment.user.name %></p>
+        <p class="mb-2 font-bold text-primary"><%= comment.user.name %></p>
         <div class="chat chat-start">
           <div class="chat-bubble bg-gradient-to-r from-primary to-accent text-white"><%= simple_format(comment.content) %></div>
         </div>
@@ -53,7 +54,7 @@
   </div>
 
   <% if user_signed_in? %>
-    <div class="mt-6 bg-white p-6 rounded-lg shadow">
+    <div class="p-6 mt-6 bg-white rounded-lg shadow">
       <%= form_with(model: [ @playlist, Comment.new ], class: "space-y-4") do |form| %>
         <%= form.text_area :content, rows: 5, placeholder: "コメントを入力してください", required: true, class: "w-full p-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" %>
         <%= form.submit "コメントする", class: "btn btn-outline btn-primary py-2 px-2" %>
@@ -61,4 +62,3 @@
     </div>
   <% end %>
 </div>
-

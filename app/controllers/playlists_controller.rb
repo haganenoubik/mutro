@@ -24,7 +24,6 @@ class PlaylistsController < ApplicationController
     @playlist = current_user.playlists.new(playlist_params)
 
     if session[:current_playlist_tracks].present?
-      # 一度のクエリで必要なトラックを全て取得
       tracks = Track.where(id: session[:current_playlist_tracks])
       @playlist.tracks = tracks
     end
@@ -66,14 +65,13 @@ class PlaylistsController < ApplicationController
       t.artist = spotify_track.artists.first.name
     end
 
-    # 追加された曲のIDをセッションに保存
     session[:current_playlist_tracks] ||= []
     session[:current_playlist_tracks] << @track.id unless session[:current_playlist_tracks].include?(@track.id)
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.append('playlist_preview', partial: 'playlists/track_with_remove_button',
-                                                                     locals: { track: @track })
+                                                                      locals: { track: @track })
       end
     end
   end
@@ -90,7 +88,7 @@ class PlaylistsController < ApplicationController
 
   def new_releases
     @playlists = Playlist.includes(:user, :mood).where('created_at >= ?',
-                                                       12.hours.ago).order(created_at: :desc).page(params[:page])
+    12.hours.ago).order(created_at: :desc).page(params[:page])
   end
 
   def my_playlists

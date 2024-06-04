@@ -1,0 +1,11 @@
+<div class="mb-4">
+  <%= f.label :mood, class: "mb-2 block text-lg font-bold text-gray-700" %>
+  <% Mood.all.each do |mood| %>
+    <div class="form-control">
+      <label class="label cursor-pointer">
+        <span class="label-text"><%= mood.name %></span>
+        <%= f.radio_button :mood_id, mood.id, class: "radio #{mood_radio_color(mood.name)}", checked: @playlist.mood_id == mood.id %>
+      </label>
+    </div>
+  <% end %>
+</div>
