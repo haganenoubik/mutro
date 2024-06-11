@@ -7,10 +7,6 @@
   <% end %>
 </div>
 
-<%= turbo_frame_tag 'flash_messages' do %>
-  <%= render 'shared/flash' %>
-<% end %>
-
 <div class="flex flex-col items-start justify-center md:flex-row">
   <div class="w-full max-h-[74vh] overflow-y-auto rounded-lg bg-white p-4 text-primary shadow lg:w-1/2 xl:w-1/2">
     <%= render 'playlists/playlist_preview', playlist: @playlist %>

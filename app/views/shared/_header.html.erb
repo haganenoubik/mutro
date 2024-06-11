@@ -12,7 +12,11 @@
       </div>
       <%= render'shared/dropdown_menu' %>
     <% else %>
-      <%= link_to 'ログインはこちら', new_user_session_path, class: "btn btn-outline btn-error btn-sm mr-4" %>
+      <div class="flex-1"></div>
+      <div class="flex flex-col items-center gap-3 md:flex-row">
+        <%= link_to 'Mutroの使い方', about_path, class: 'font-black text-primary' %>
+        <%= link_to 'ログインはこちら', new_user_session_path, class: "btn btn-outline btn-error btn-sm mr-4" %>
+      </div>
     <% end %>
   </div>
 </div>
