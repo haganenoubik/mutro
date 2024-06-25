@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
   def search
+    @tracks = []
+
     if params[:search].present?
       search_results = RSpotify::Track.search(params[:search])
       @tracks = search_results.first(8).map do |track|

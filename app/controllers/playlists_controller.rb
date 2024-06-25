@@ -14,6 +14,7 @@ class PlaylistsController < ApplicationController
   def new
     session.delete(:current_playlist_tracks)
     @playlist = Playlist.new
+    @tracks = []
   end
 
   def edit

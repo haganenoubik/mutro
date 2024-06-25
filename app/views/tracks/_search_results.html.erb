@@ -1,10 +1,10 @@
 <%= turbo_frame_tag "search_results" do %>
   <div id="search-results">
-    <% if @tracks.present? %>
+    <% if tracks.any? %>
       <div class="mt-4">
         <h2 class="mb-2 text-center font-bold text-primary">検索結果</h2>
         <div class="flex flex-wrap justify-center">
-          <% @tracks.each do |track| %>
+          <% tracks.each do |track| %>
             <%= render 'tracks/search_result', track: track %>
           <% end %>
         </div>
