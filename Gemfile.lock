@@ -207,6 +207,8 @@ GEM
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
+    omniauth-spotify (0.0.13)
+      omniauth-oauth2 (~> 1.1)
     orm_adapter (0.5.0)
     parallel (1.23.0)
     parser (3.2.2.4)
@@ -395,6 +397,7 @@ DEPENDENCIES
   meta-tags
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
+  omniauth-spotify
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)
