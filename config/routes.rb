@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { 
+  devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
@@ -14,17 +14,17 @@ end
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'update_info', to: 'static_pages#update_info'
-  
-  get 'my_playlists', to: 'playlists#my_playlists', as: :my_playlists
-  get 'trend_picks', to: 'playlists#trend_picks', as: :trend_picks
-  get 'todays_picks', to: 'playlists#todays_picks', as: :todays_picks
+
+  get 'my_playlists', to: 'playlists#my_playlists'
+  get 'trend_picks', to: 'playlists#trend_picks'
+  get 'todays_picks', to: 'playlists#todays_picks'
 
   resources :playlists do
     collection do
       get :new_releases
       post :add_track_to_playlist
       delete :remove_track_from_playlist
-    end 
+    end
     resources :tracks, controller: 'playlist_tracks', only: %i[destroy]
     resources :comments, only: %i[create]
     resources :good_vibes, only: %i[create destroy]

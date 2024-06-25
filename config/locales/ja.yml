@@ -24,4 +24,8 @@ ja:
     playlist_deleted: "プレイリストが削除されました。"
     new_playlist: "🎉 New playlist out now! 🎉"
     auth_failed: "認証に失敗しました。もう一度お試しください。"
-
+  views:
+    pagination:
+      next: "Next >"
+      previous: "< Prev"
+      truncate: "..."
