@@ -24,16 +24,24 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%- if controller_name == 'sessions' %>
+    <% if controller_name == 'sessions' && provider == :google_oauth2 %>
       <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false } do %>
-        <%= image_tag('sign_in_with_google.png', alt: 'Sign in with Google', width: 180, height: 40) %>
+        <%= image_tag("sign_in_with_google.png", alt: "Sign in with Google", width: 180, height: 40) %>
       <% end %>
       <br />
-    <% end %>
-
-    <%- if controller_name == 'registrations' %>
+    <% elsif controller_name == 'registrations' && provider == :google_oauth2 %>
       <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false } do %>
-        <%= image_tag('sign_up_with_google.png', alt: 'Sign up with Google', width: 180, height: 40) %>
+        <%= image_tag("sign_up_with_google.png", alt: "Sign up with Google", width: 180, height: 40) %>
+      <% end %>
+      <br />
+    <% elsif controller_name == 'sessions' && provider == :spotify %>
+      <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'btn btn-primary' do %>
+        Sign in with Spotify
+      <% end %>
+      <br />
+    <% elsif controller_name == 'registrations' && provider == :spotify %>
+      <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'btn btn-primary' do %>
+        Sign up with Spotify
       <% end %>
       <br />
     <% end %>
