@@ -87,7 +87,7 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'spring-commands-rspec'
 
-  gem 'pry-rails'
+  gem 'pry-byebug'
 
   gem 'bullet'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
