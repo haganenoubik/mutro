@@ -3,8 +3,8 @@ class TracksController < ApplicationController
     @tracks = []
 
     if params[:search].present?
-      search_results = RSpotify::Track.search(params[:search])
-      @tracks = search_results.first(8).map do |track|
+      search_results = RSpotify::Track.search(params[:search], limit: 8)
+      @tracks = search_results.map do |track|
         {
           id: track.id,
           name: track.name,
