@@ -25,6 +25,7 @@ end
       post :add_track_to_playlist
       delete :remove_track_from_playlist
     end
+
     resources :tracks, controller: 'playlist_tracks', only: %i[destroy]
     resources :comments, only: %i[create]
     resources :good_vibes, only: %i[create destroy]
@@ -43,5 +44,7 @@ end
       get :search
     end
   end
+
+  get '/auth/spotify/callback', to: 'users/omniauth_callbacks#spotify'
 
 end

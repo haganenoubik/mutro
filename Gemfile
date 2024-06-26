@@ -59,6 +59,8 @@ gem 'ransack'
 
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-spotify'
+
 
 gem 'meta-tags'
 
@@ -85,7 +87,7 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'spring-commands-rspec'
 
-  gem 'pry-rails'
+  gem 'pry-byebug'
 
   gem 'bullet'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
